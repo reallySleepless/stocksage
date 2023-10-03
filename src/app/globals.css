@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Use this only for CSS which will be globally used, else use modular CSS */
