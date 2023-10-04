@@ -5,7 +5,7 @@ import logo from "@assets/logo.png";
 
 interface SidebarButtonProps {
   text?: string;
-  icon: string;
+  icon?: string;
 }
 
 const SidebarButton = ({ text, icon }: SidebarButtonProps) => {

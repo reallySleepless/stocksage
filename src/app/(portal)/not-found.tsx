@@ -1,4 +1,4 @@
-import React from "react";
+import "../globals.css";
 
 const NotFound = () => {
   return <div>This page is not found</div>;
