@@ -13,7 +13,6 @@ interface SidebarButtonProps {
 
 const SidebarButton = ({ text, icon, href }: SidebarButtonProps) => {
   const isActive = usePathname() === href;
-  console.log(isActive);
   return (
     <Link
       href={href}
