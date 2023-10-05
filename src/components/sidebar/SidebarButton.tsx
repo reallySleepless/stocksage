@@ -18,7 +18,7 @@ const SidebarButton = ({ text, icon, href }: SidebarButtonProps) => {
       href={href}
       className={
         (isActive ? "bg-accent-background text-black" : "text-accent") +
-        ` w-full flex text-center text-lg justify-start items-center gap-4 p-5 pl-16 mr-8 ml-2 flex-wrap rounded-lg`
+        ` w-full flex text-center text-lg justify-start items-center gap-4 p-5 pl-6 fhd:pl-16 mr-6 fhd:mr-8 ml-0 rounded-lg`
       }
     >
       <Image src={logo} alt="Dashboard" height={30} />

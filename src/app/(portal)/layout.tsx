@@ -20,7 +20,7 @@ export default function DashboardLayout({
       <body className={inter.className}>
         <div className="grid min-h-screen grid-cols-[1fr_5fr] justify-center gap-6 overflow-hidden">
           <Sidebar />
-          {children}
+          <div className="mt-6">{children}</div>
         </div>
       </body>
     </html>

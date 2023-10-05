@@ -72,6 +72,8 @@
 @layer base {
   * {
     @apply border-border;
+    @apply text-sm;
+    @apply fhd:text-base;
   }
   body {
     @apply bg-primary-background text-white;
