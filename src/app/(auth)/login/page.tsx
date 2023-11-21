@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import logo from "@assets/logo.png";
-import styles from "./styles.module.css";
+import styles from "./login.module.css";
 import { Button } from "@components/ui/button";
 import Link from "next/link";
 
