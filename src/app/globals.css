@@ -73,8 +73,9 @@
   * {
     @apply border-border;
     @apply text-sm;
-    @apply fhd:text-base;
+    @apply text-base;
   }
+
   body {
     @apply bg-primary-background text-white;
   }

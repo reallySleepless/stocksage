@@ -8,13 +8,14 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import "@fontsource/plus-jakarta-sans";
 
 const signupSchema = z.object({
 	name: z.string().min(1, { message: "Name is required" }),
 	email: z
 		.string()
-		.email({ message: "Invalid Email" })
-		.min(1, { message: "Email is required" }),
+		.min(1, { message: "Email is required" })
+		.email({ message: "Invalid Email" }),
 });
 
 type SignUpSchema = z.infer<typeof signupSchema>;
@@ -31,16 +32,18 @@ const SignUp = () => {
 	const onSubmit: SubmitHandler<SignUpSchema> = (data) => console.log(data);
 
 	return (
-		<div className="bg-secondary-background h-screen">
+		<div className="bg-secondary-background h-screen font-[plus-jakarta-sans]">
 			<Image src={logo} alt="StockSage" height={110} className="py-10" />
 			<div className="w-[80%] m-auto mt-24">
-				<div className={styles.signupTitle}>
-					<h1>Welcome To StockSage !</h1>
-					<p>Your Ultimate Trading Hub</p>
+				<div className="font-[400]">
+					<h1 className="text-[64px] leading-[100%]">Welcome To StockSage !</h1>
+					<p className="text-[24px] leading-[100%]">
+						Your Ultimate Trading Hub
+					</p>
 				</div>
 				<form
 					action=""
-					className={styles.signupForm}
+					className="mt-[50px] w-[500px]"
 					onSubmit={handleSubmit(onSubmit)}
 				>
 					<div className="flex flex-col gap-2">
@@ -48,7 +51,7 @@ const SignUp = () => {
 							Name
 						</label>
 						<input
-							className={`w-full focus:outline-none ${
+							className={`w-full focus:outline-none bg-[#1d1a3980] h-[60px] p-[10px] text-[24px] text-[#ffffff80] ${
 								errors.name && "border-red-500"
 							} rounded appearance-none focus:outline-none focus:shadow-outline`}
 							id="name"
@@ -57,7 +60,7 @@ const SignUp = () => {
 							{...register("name")}
 						/>
 						{errors.name && (
-							<p className="text-xs italic text-red-500 mt-2">
+							<p className="text-xl text-red-500 mt-2">
 								{errors.name?.message}
 							</p>
 						)}
@@ -67,16 +70,16 @@ const SignUp = () => {
 							Email
 						</label>
 						<input
-							className={`w-full ${
+							className={`w-full bg-[#1d1a3980] h-[60px] p-[10px] text-[24px] text-[#ffffff80] ${
 								errors.email && "border-red-500"
 							} focus:outline-none`}
 							id="email"
 							type="email"
-							placeholder="Email"
+							placeholder="Enter your email"
 							{...register("email")}
 						/>
 						{errors.email && (
-							<p className="text-xs italic text-red-500 mt-2">
+							<p className="text-xl text-red-500 mt-2">
 								{errors.email?.message}
 							</p>
 						)}

@@ -1,33 +1,69 @@
 "use client";
 import Image from "next/image";
 import logo from "@assets/logo.png";
-import styles from "./login.module.css";
 import { Button } from "@components/ui/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { z } from "zod";
+
+import "@fontsource/plus-jakarta-sans";
+
+const loginSchema = z.object({
+	email: z
+		.string()
+		.min(1, { message: "Email is required" })
+		.email({ message: "Invalid Email" }),
+});
+
+type LoginSchema = z.infer<typeof loginSchema>;
 
 const Login = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<LoginSchema>({
+		resolver: zodResolver(loginSchema),
+	});
+
+	const onSubmit: SubmitHandler<LoginSchema> = (data) => console.log(data);
+
 	return (
-		<div className="bg-secondary-background h-screen">
+		<div className="bg-secondary-background h-screen font-[plus-jakarta-sans]">
 			<Image src={logo} alt="StockSage" height={110} className="py-10" />
 			<div className="w-[80%] m-auto mt-24">
-				<div className={styles.loginTitle}>
-					<h1>Welcome Back !</h1>
-					<p className="mt-5">
+				<div className="font-[400]">
+					<h1 className="text-[64px] leading-[100%]">Welcome Back !</h1>
+					<p className="text-[24px] leading-[100%] mt-5">
 						Enter your email to receive a one-time password
 					</p>
 				</div>
-				<form action="" className={styles.loginForm}>
+				<form
+					action=""
+					className="mt-[50px] w-[500px]"
+					onSubmit={handleSubmit(onSubmit)}
+				>
 					<div>
 						<input
 							type="text"
+							id="email"
 							placeholder={"Enter your email"}
-							className="focus:outline-none p-2 w-full h-[60px] text-[16px] font-light bg-[#1D1A39]"
+							className={`focus:outline-none p-[10px] w-full h-[60px] text-[24px] font-light bg-[#1D1A39] ${
+								errors.email && "border-red-500"
+							}`}
+							{...register("email")}
 						/>
+						{errors.email && (
+							<p className="text-xl text-red-500 mt-2">
+								{errors.email?.message}
+							</p>
+						)}
 					</div>
 					<div className="mt-5">
-						<input type="checkbox" className="bg-[#1D1A39] text" />
-						<label htmlFor="remeberMe" className="ml-3 text-[16px]">
-							Remeber Me
+						<input type="checkbox" />
+						<label htmlFor="rememberMe" className="ml-3 text-[24px]">
+							Remember Me
 						</label>
 					</div>
 
