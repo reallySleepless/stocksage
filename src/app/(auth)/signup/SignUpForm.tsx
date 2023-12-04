@@ -25,7 +25,10 @@ const SignUpForm = () => {
 		resolver: zodResolver(signupSchema),
 	});
 
-	const onSubmit: SubmitHandler<SignUpSchema> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
+		console.log(data);
+		window.location.href = "/otp";
+	};
 
 	return (
 		<form

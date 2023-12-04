@@ -48,9 +48,12 @@ const LoginForm = () => {
 					<p className="text-xl text-red-500 mt-2">{errors.email?.message}</p>
 				)}
 			</div>
-			<div className="mt-5">
-				<input type="checkbox" />
-				<label htmlFor="rememberMe" className="ml-3 text-[24px]">
+			<div className="mt-5 flex w-full align-middle">
+				<input
+					type="checkbox"
+					className="custom-checkbox"
+				/>
+				<label htmlFor="rememberMe" className="ml-3 text-[24px] text-center">
 					Remember Me
 				</label>
 			</div>

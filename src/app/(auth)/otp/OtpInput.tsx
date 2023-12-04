@@ -45,8 +45,14 @@ const OtpInput = () => {
 		}
 	};
 
+	const handleSubmit = () => {
+		const otp = inputRefs.map((ref) => ref.current!.value).join("");
+		console.log(otp);
+		window.location.href = "/signup";
+	};
+
 	return (
-		<form action="" className={`mt-[50px] w-[500px]`}>
+		<form action="" className={`mt-[50px] w-[500px]`} onSubmit={handleSubmit}>
 			<div className="flex justify-between">
 				{inputRefs.map((ref, index) => (
 					<input
@@ -60,7 +66,10 @@ const OtpInput = () => {
 					/>
 				))}
 			</div>
-			<Button className="w-full mt-7 h-[60px] text-[24px] font-light bg-[#1D1A39]">
+			<Button
+				type="submit"
+				className="w-full mt-7 h-[60px] text-[24px] font-light bg-[#1D1A39]"
+			>
 				Sign In
 			</Button>
 			<p className="text-center mt-3 text-[#5A5A5A] text-[20px]">
