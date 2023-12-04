@@ -23,11 +23,11 @@ const LoginForm = () => {
 	} = useForm<LoginSchema>({
 		resolver: zodResolver(loginSchema),
 	});
-	const [maxDimension, setMaxDimension] = useState(0);
-	const onSubmit: SubmitHandler<LoginSchema> = (data) => console.log(data);
-	useEffect(() => {
-		setMaxDimension(Math.max(window.innerWidth, window.innerHeight));
-	}, []);
+
+	const onSubmit: SubmitHandler<LoginSchema> = (data) => {
+		console.log(data);
+	};
+
 	return (
 		<form
 			action=""
@@ -49,10 +49,7 @@ const LoginForm = () => {
 				)}
 			</div>
 			<div className="mt-5 flex w-full align-middle">
-				<input
-					type="checkbox"
-					className="custom-checkbox"
-				/>
+				<input type="checkbox" className="custom-checkbox" />
 				<label htmlFor="rememberMe" className="ml-3 text-[24px] text-center">
 					Remember Me
 				</label>
@@ -62,7 +59,7 @@ const LoginForm = () => {
 				Send 4-digit code
 			</Button>
 			<p className="text-center mt-3 text-[#5A5A5A] text-[20px]">
-				Don't have an account ?{" "}
+				Don&apos;t have an account ?{" "}
 				<Link className="text-[#383737] text-[20px]" href="/signup">
 					Make one!
 				</Link>
