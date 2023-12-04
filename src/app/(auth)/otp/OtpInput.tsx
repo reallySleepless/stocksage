@@ -5,30 +5,32 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 const OtpInput = () => {
-	const inputRefs = Array.from({ length: 4 }, () =>
-		useRef<HTMLInputElement>(null)
+	const inputRefs = useRef<any[]>([]);
+
+	inputRefs.current = Array.from(Array(4).keys()).map(
+		(ref, index) => (inputRefs.current[index] = React.createRef())
 	);
 
 	useEffect(() => {
-		inputRefs[0].current!.focus();
+		inputRefs.current[0].current!.focus();
 	}, []);
 
 	const handleInputChange = (index: number, value: string) => {
 		const regex = /^[0-9\b]+$/;
 
 		if (!regex.test(value)) {
-			inputRefs[index].current!.value = "";
+			inputRefs.current[index].current!.value = "";
 			return;
 		}
 
 		const newValue = value.slice(0, 1);
 
 		if (newValue !== value) {
-			inputRefs[index].current!.value = newValue;
+			inputRefs.current[index].current!.value = newValue;
 		}
 
-		if (newValue && index < inputRefs.length - 1) {
-			inputRefs[index + 1].current!.focus();
+		if (newValue && index < inputRefs.current.length - 1) {
+			inputRefs.current[index + 1].current!.focus();
 		}
 	};
 
@@ -39,14 +41,14 @@ const OtpInput = () => {
 		if (
 			e.key === "Backspace" &&
 			index > 0 &&
-			!inputRefs[index].current!.value
+			!inputRefs.current[index].current!.value
 		) {
-			inputRefs[index - 1].current!.focus();
+			inputRefs.current[index - 1].current!.focus();
 		}
 	};
 
 	const handleSubmit = () => {
-		const otp = inputRefs.map((ref) => ref.current!.value).join("");
+		const otp = inputRefs.current.map((ref) => ref.current!.value).join("");
 		console.log(otp);
 		window.location.href = "/signup";
 	};
@@ -54,7 +56,7 @@ const OtpInput = () => {
 	return (
 		<form action="" className={`mt-[50px] w-[500px]`} onSubmit={handleSubmit}>
 			<div className="flex justify-between">
-				{inputRefs.map((ref, index) => (
+				{inputRefs.current.map((ref, index) => (
 					<input
 						key={index}
 						ref={ref}
@@ -73,7 +75,7 @@ const OtpInput = () => {
 				Sign In
 			</Button>
 			<p className="text-center mt-3 text-[#5A5A5A] text-[20px]">
-				Didn't receive code?{" "}
+				Didn&apos;t receive code?{" "}
 				<Link className="text-[#383737] text-[20px]" href="">
 					Re-send
 				</Link>
