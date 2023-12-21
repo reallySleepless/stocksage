@@ -17,6 +17,8 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.2",
     "next": "latest",
     "nodemailer": "^6.9.7",
     "otp-generator": "^4.0.1",

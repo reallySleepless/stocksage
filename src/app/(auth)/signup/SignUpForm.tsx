@@ -1,10 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@components/ui/button";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import UserModel from "@models/user";
+import connectMongoDB from "@lib/mongodb";
 
 const signupSchema = z.object({
 	name: z.string().min(1, { message: "Name is required" }),
@@ -16,7 +18,26 @@ const signupSchema = z.object({
 
 type SignUpSchema = z.infer<typeof signupSchema>;
 
+// const userSchema = new mongoose.Schema({
+// 	name: {
+// 		type: String,
+// 		required: [true, "Name is required"],
+// 	},
+// 	email: {
+// 		type: String,
+// 		required: [true, "Email is required"],
+// 		validate: {
+// 			validator: (value: string) => /\S+@\S+\.\S+/.test(value),
+// 			message: "Invalid Email",
+// 		},
+// 	},
+// });
+
 const SignUpForm = () => {
+	useEffect(() => {
+		connectMongoDB();
+	}, []);
+
 	const {
 		register,
 		handleSubmit,
@@ -25,9 +46,27 @@ const SignUpForm = () => {
 		resolver: zodResolver(signupSchema),
 	});
 
-	const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
-		console.log(data);
-		window.location.href = "/otp";
+	const onSubmit: SubmitHandler<SignUpSchema> = async (data) => {
+		const user = new UserModel(data);
+		await user.save();
+		console.log("User created successfully");
+		// try {
+		// 	const res = await fetch("../api/users", {
+		// 		method: "POST",
+		// 		body: JSON.stringify(data),
+		// 		headers: {
+		// 			"Content-Type": "application/json",
+		// 		},
+		// 	});
+		// 	if (res.ok) {
+		// 		console.log("User created successfully");
+		// 		window.location.href = "/otp";
+		// 	} else {
+		// 		console.log("User creation failed");
+		// 	}
+		// } catch (err) {
+		// 	console.log(err);
+		// }
 	};
 
 	return (
