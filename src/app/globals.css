@@ -73,9 +73,27 @@
   * {
     @apply border-border;
     @apply text-sm;
-    @apply fhd:text-base;
+    @apply text-base;
   }
+
   body {
     @apply bg-primary-background text-white;
   }
+}
+
+/* Custom global CSS */
+.custom-checkbox {
+  background-color: #1D1A3980;
+  border-radius: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background: #1D1A3980 url("../assets/icons/checkmark.svg") 5px 5px no-repeat;
+  background-position: center;
 }
