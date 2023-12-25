@@ -8,7 +8,7 @@ interface SearchProps {
 const Search = ({ className, placeholder }: SearchProps) => {
   return (
     <div
-      className={`w-5/6 h-16 bg-secondary-background rounded-full flex items-center gap-4 pl-6 ${
+      className={`w-4/6 h-16 bg-secondary-background rounded-full flex items-center gap-4 pl-6 ${
         className || ""
       }`}
     >

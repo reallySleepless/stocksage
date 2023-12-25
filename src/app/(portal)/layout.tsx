@@ -18,7 +18,7 @@ export default function DashboardLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="grid min-h-screen grid-cols-[1fr_5fr] justify-center gap-6 overflow-hidden">
+        <div className="w-screen grid min-h-screen grid-cols-[1fr_6fr] justify-center gap-6 overflow-hidden">
           <Sidebar />
           <div className="mt-6">{children}</div>
         </div>
