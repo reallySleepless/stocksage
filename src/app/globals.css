@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,7 +85,7 @@
 
 /* Custom global CSS */
 .custom-checkbox {
-  background-color: #1D1A3980;
+  background-color: #1d1a3980;
   border-radius: 2px;
   appearance: none;
   -webkit-appearance: none;
@@ -94,6 +96,6 @@
 }
 
 .custom-checkbox:checked {
-  background: #1D1A3980 url("../assets/icons/checkmark.svg") 5px 5px no-repeat;
+  background: #1d1a3980 url("../assets/icons/checkmark.svg") 5px 5px no-repeat;
   background-position: center;
 }

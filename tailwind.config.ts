@@ -1,3 +1,5 @@
+import { Plus_Jakarta_Sans } from "next/font/google";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -20,6 +22,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        Plus_Jakarta_Sans: ["Plus Jakarta Sans", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
