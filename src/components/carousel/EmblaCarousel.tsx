@@ -33,12 +33,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className="embla__container">
           {slides.map((index) => (
             <div className="embla__slide" key={index}>
-              {/* <Image
-                className="embla__slide__img w-full h-full"
-                src={imageByIndex(index)}
-                alt="Your alt text"
-              /> */}
-              <StockCarouselCard />
+              <StockCarouselCard
+                randomIntTemp={index}
+                carouselCardColor={getCarouselCardColor(index)}
+                companyName={`Company ${index}`}
+                companySymbol={`S${index}`}
+                currentValue={200}
+                currentChange={index}
+              />
             </div>
           ))}
         </div>
