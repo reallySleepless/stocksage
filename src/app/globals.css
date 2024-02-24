@@ -105,7 +105,7 @@
 .embla-v1 {
   height: 10rem;
   --slide-spacing: 0.5rem;
-  --slide-size: 22%;
+  --slide-size: 25%;
   --slide-height: 8rem;
 }
 .embla__viewport {
@@ -124,7 +124,6 @@
   position: relative;
 }
 .embla__slide__img {
-  display: block;
   height: var(--slide-height);
   width: 100%;
   object-fit: cover;
