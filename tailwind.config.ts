@@ -13,6 +13,7 @@ module.exports = {
     screens: {
       hd: "1366px",
       fhd: "1920px",
+      lg: "1024px",
     },
     container: {
       center: true,
