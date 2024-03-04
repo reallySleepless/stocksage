@@ -6,23 +6,23 @@ import Sidebar from "@components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Stock Sage",
-  description: "Stock analysis and prediction tool",
+	title: "Stock Sage",
+	description: "Stock analysis and prediction tool",
 };
 
 export default function DashboardLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="w-screen grid min-h-screen grid-cols-[1fr_6fr] justify-center gap-6 overflow-hidden">
-          <Sidebar />
-          <div className="mt-6">{children}</div>
-        </div>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={inter.className}>
+				<div className="w-screen grid min-h-screen grid-cols-[1fr_6fr] justify-center gap-6 overflow-hidden">
+					<Sidebar />
+					<div className="mt-6">{children}</div>
+				</div>
+			</body>
+		</html>
+	);
 }
