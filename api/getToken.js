@@ -7,7 +7,7 @@ const headers = {
 };
 
 const data = {
-	code: "dp3xEJ",
+	code: "EGKRXU",
 	client_id: "0be29efc-2ba4-41db-b6d0-88fe4d69451f",
 	client_secret: "z0tizytyfc",
 	redirect_uri: "https://127.0.0.1:5000/",

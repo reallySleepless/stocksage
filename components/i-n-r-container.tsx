@@ -6,6 +6,7 @@ import "react-widgets/styles.css";
 
 const INRContainer: NextPage = () => {
 	const [selectedCompany, setSelectedCompany] = useState("");
+	console.log(selectedCompany);
 
 	return (
 		<section className="w-[107.575rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full text-left text-[1.5rem] text-black font-plus-jakarta-sans">
