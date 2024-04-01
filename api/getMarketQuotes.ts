@@ -7,13 +7,12 @@ export const getMarketQuotes = async ({ isin }: { isin: string }) => {
 		Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
 	};
 
-	axios
-		.get(url, { headers })
-		.then((response:any) => {
-			console.log(response.data);
-			return response.data;	
-		})
-		.catch((error:any) => {
-			console.error(error);
-		});
+	try {
+		const response = await axios.get(url, { headers });
+		console.log("Response:", response.data);
+		return response.data;
+	  } catch (error) {
+		console.error(error);
+		throw error; // Re-throwing the error to be caught by the caller
+	  }
 };

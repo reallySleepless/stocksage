@@ -7,6 +7,7 @@ import SnapshotAndGraph from "../components/snapshot-and-graph";
 import { getMetaData } from "../api/getMetaData";
 import { getMarketQuotes } from "../api/getMarketQuotes";
 import { getProfile } from "../api/getProfile";
+import { getToken } from "../api/getToken";
 
 const thoughtForTheDay =
 	"The best time to plant a tree was 20 years ago. The second best time is now.";
