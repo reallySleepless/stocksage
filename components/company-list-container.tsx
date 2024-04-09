@@ -1,16 +1,20 @@
 import CompanyList from "./company-list";
 import { Combobox } from "react-widgets/cjs";
 import jsonFile from "../DataFiles/NSE.json";
-import { useState } from "react";
 import "react-widgets/styles.css";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-const CompanyListContainer = () => {
+const CompanyListContainer = ({
+	setCompanyToDisplay,
+}: {
+	setCompanyToDisplay: Dispatch<SetStateAction<string>>;
+}) => {
 	const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
 	const [selectedCompany, setSelectedCompany] = useState("");
 
+
 	const handleSelect = (companyName: string) => {
 		setSelectedCompanies([...selectedCompanies, companyName]);
-		console.log(selectedCompanies);
 		setSelectedCompany("");
 	};
 
@@ -28,7 +32,10 @@ const CompanyListContainer = () => {
 					value={selectedCompany}
 				/>
 			</div>
-			<CompanyList companyList={selectedCompanies} />
+			<CompanyList
+				companyList={selectedCompanies}
+				setCompanyToDisplay={setCompanyToDisplay}
+			/>
 		</div>
 	);
 };

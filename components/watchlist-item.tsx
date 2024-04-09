@@ -1,7 +1,11 @@
 import type { NextPage } from "next";
 import { useMemo, type CSSProperties } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export type WatchlistItemType = {
+	setCompanyToDisplay: Dispatch<SetStateAction<string>>;
+	isin: string;
+	marketQuotes: any;
 	cLogo?: string;
 	cName?: string;
 	cSymbol?: string;
@@ -14,6 +18,9 @@ export type WatchlistItemType = {
 
 const WatchlistItem: NextPage<WatchlistItemType> = ({
 	// cLogo,
+	setCompanyToDisplay,
+	isin,
+	marketQuotes,
 	cName,
 	cSymbol,
 	whileLoopNodeMarginTop,
@@ -45,6 +52,7 @@ const WatchlistItem: NextPage<WatchlistItemType> = ({
 		<div
 			className="self-stretch flex flex-row items-start justify-between pt-[0rem] px-[0rem] pb-[1.688rem] gap-[1.25rem] shrink-0 text-left text-[0.75rem] text-darkslateblue-100 font-actor mq450:flex-wrap mq450:justify-center"
 			style={whileLoopNodeStyle}
+			onClick={() => setCompanyToDisplay(marketQuotes)}
 		>
 			<div className="flex flex-row items-start justify-start gap-[0.375rem]">
 				{/* <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
