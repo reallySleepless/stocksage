@@ -1,16 +1,23 @@
 import WatchlistItem from "./watchlist-item";
 import jsonFile from "../DataFiles/NSE.json";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { getMarketQuotes } from "../api/getMarketQuotes";
 
 interface Company {
 	segment: string;
+	marketQuotes: any[];
 	name: string;
 	isin: string;
 	trading_symbol: string;
 }
 
-const CompanyList = ({ companyList }: { companyList: string[] }) => {
+const CompanyList = ({
+	companyList,
+	setCompanyToDisplay,
+}: {
+	companyList: string[];
+	setCompanyToDisplay: Dispatch<SetStateAction<any>>;
+}) => {
 	const [companies, setCompanies] = useState<Company[]>([]);
 	const [marketQuotes, setMarketQuotes] = useState<any[]>([]);
 
@@ -60,6 +67,9 @@ const CompanyList = ({ companyList }: { companyList: string[] }) => {
 				<>
 					<WatchlistItem
 						key={index}
+						setCompanyToDisplay={setCompanyToDisplay}
+						isin={companyData?.company?.isin}
+						marketQuotes={companyData}
 						// cLogo="/amazonicon1-1.svg"
 						cName={companyData?.company?.name}
 						cSymbol={companyData?.company?.trading_symbol}
