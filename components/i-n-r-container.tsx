@@ -3,10 +3,18 @@ import jsonFile from "../DataFiles/NSE.json";
 import React, { useState } from "react";
 import Combobox from "react-widgets/Combobox";
 import "react-widgets/styles.css";
+import { json } from "stream/consumers";
 
 const INRContainer: NextPage = () => {
+	const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
 	const [selectedCompany, setSelectedCompany] = useState("");
-	console.log(selectedCompany);
+
+	const handleSelect = (companyName: string) => {
+		setSelectedCompanies([...selectedCompanies, companyName]);
+		setSelectedCompany("");
+	};
+
+	console.log(selectedCompanies);
 
 	return (
 		<section className="w-[107.575rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full text-left text-[1.5rem] text-black font-plus-jakarta-sans">
@@ -23,7 +31,8 @@ const INRContainer: NextPage = () => {
 							className="w-[700px]"
 							hideCaret
 							hideEmptyPopup
-							onSelect={(companyName) => setSelectedCompany(companyName)}
+							onChange={(companyName) => setSelectedCompany(companyName)}
+							onSelect={handleSelect}
 							data={jsonFile.map((company) => company.name)}
 							placeholder="Search for a company"
 						/>

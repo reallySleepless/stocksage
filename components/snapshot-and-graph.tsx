@@ -67,7 +67,6 @@ const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
 		prevYearData();
 	}, [companyData]);
 
-	console.log("Portfolio Analytics Data", portfolioAnalyticsData);
 
 	return (
 		<div className="self-stretch flex flex-row items-start justify-start gap-[2.063rem] max-w-full text-left text-[0.875rem] text-darkslateblue-100 font-actor mq800:gap-[2.063rem_1rem] mq1300:flex-wrap">
