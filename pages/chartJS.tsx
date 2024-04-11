@@ -6,7 +6,7 @@ import { getExchangeStatus } from "../api/getExchangeStatus";
 
 const intervalObj = {
 	"1D": "1minute",
-	"5D": "30minute",
+	"5D": "1minute",
 	"1M": "30minute",
 	"6M": "day",
 	"1Y": "day",
@@ -58,11 +58,6 @@ const ChartJS = ({ isin, intOpt }: { isin: string; intOpt: string }) => {
 	// const intOpt = "1D";
 	const interval = intervalObj[intOpt as keyof typeof intervalObj];
 
-	console.log("Interval", interval);
-	console.log("isin", isin);
-	console.log("currentDate", currentDate);
-	console.log("prevDate", prevDate);
-
 	useEffect(() => {
 		const lastMarketStatus = async () => {
 			const res = await getExchangeStatus({ exchange: "NSE" });
@@ -103,8 +98,6 @@ const ChartJS = ({ isin, intOpt }: { isin: string; intOpt: string }) => {
 		lastMarketStatus();
 	}, [isin, intOpt]);
 
-	console.log("currentDate", currentDate);
-	console.log("prevDate", prevDate);
 
 	useEffect(() => {
 		const prevYearData = async () => {
@@ -120,7 +113,6 @@ const ChartJS = ({ isin, intOpt }: { isin: string; intOpt: string }) => {
 				const newXValues: string[] = [];
 				const newYValues: any[] = [];
 				resolvedResponse?.["data"]?.["candles"]?.forEach((data: any) => {
-					console.log("Data", data);
 					const dateTime = new Date(data[0]);
 					const time = dateTime.toLocaleTimeString();
 					const date = dateTime.toLocaleDateString();

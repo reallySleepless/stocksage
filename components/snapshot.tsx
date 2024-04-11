@@ -54,7 +54,6 @@ const Snapshot = (props: SnapshotType) => {
 		fiftyTwoWeekLowValue,
 	]);
 
-	console.log("Day Diff", dayDiff.toFixed(2));
 
 	return (
 		<div className="self-stretch rounded-lg bg-whitesmoke flex flex-col items-start justify-start pt-[1.25rem] pb-[0.5rem] pr-[0.688rem] pl-[0.75rem] box-border relative gap-[1.25rem] min-h-[30.813rem] text-left text-[0.875rem] text-darkslateblue-100 font-actor">
