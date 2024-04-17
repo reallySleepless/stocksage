@@ -4,7 +4,7 @@ import requests
 url = 'http://localhost:5000/predict'
 
 # Read the CSV file
-csv_file_path = r"H:\FINALYEARPROJECT\PROJECT\datasets\ZEEL.BSE.csv"
+csv_file_path = r"D:\Code\stocksage\MODEL API\New\BAJAJFINSV.BSE.csv"
 with open(csv_file_path, 'rb') as file:
     csv_data = file.read()
 
