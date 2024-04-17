@@ -4,14 +4,19 @@
   "private": true,
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
+    "@react-stately/data": "^3.11.2",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "fs": "^0.0.1-security",
     "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.1",
     "react-widgets": "^5.8.4",
-    "react-widgets-tailwind": "^1.1.5"
+    "react-widgets-tailwind": "^1.1.5",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/node": "^17.0.42",
@@ -29,5 +34,10 @@
     "build": "next build && next export -o build/",
     "start": "next start",
     "lint": "next lint"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

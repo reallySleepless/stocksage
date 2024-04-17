@@ -78,19 +78,6 @@ const ChartJS = ({ isin, intOpt }: { isin: string; intOpt: string }) => {
 
 				setPrevDate(settingPrevDate(new Date(date), intOpt));
 
-				// let oldDate = new Date(date).setMonth(new Date(date).getMonth() - 1);
-				// let prevDateArray = new Date(oldDate)
-				// 	.toLocaleString("en-us", {
-				// 		timeZone: "Asia/Kolkata",
-				// 	})
-				// 	.split(",")[0]
-				// 	.split("/");
-				// setPrevDate(
-				// 	`${prevDateArray[2]}-${prevDateArray[0].padStart(
-				// 		2,
-				// 		"0"
-				// 	)}-${prevDateArray[1].padStart(2, "0")}`
-				// );
 			}
 			return resolvedResponse;
 		};
