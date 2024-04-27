@@ -1,8 +1,18 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import { getProfile } from "../api/getProfile";
+import { get } from "http";
+import { useState } from "react";
 
 const Navbar = () => {
-  const onHover = useCallback(() => {
-    //TODO: TODO: on hover, expand pill
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+    const getProfileData = async () => {
+      const res = await getProfile();
+      console.log(res);
+      setUsername(res.data.user_name);
+    };
+
+    getProfileData();
   }, []);
 
   return (
@@ -123,24 +133,17 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex flex-col items-start justify-start pt-[0rem] px-[0rem] pb-[2.125rem] text-[1rem] text-whitesmoke">
-          <div className="rounded-81xl bg-royalblue-100 flex flex-row items-start justify-start py-[0.156rem] pr-[0.938rem] pl-[0.5rem] gap-[0.625rem]">
+          <div className="rounded-81xl bg-royalblue-100 flex flex-row items-start justify-start p-2 pr-7 gap-[0.625rem]">
             <img
               className="h-[3rem] w-[3rem] relative"
               loading="lazy"
               alt=""
               src="/frame-427319719.svg"
             />
-            <div className="flex flex-col items-start justify-start pt-[0.75rem] px-[0rem] pb-[0rem]">
-              <img
-                className="w-[1.5rem] h-[1.5rem] relative cursor-pointer"
-                alt=""
-                src="/vuesaxtwotonearrowdown.svg"
-                onClick={onHover}
-              />
-            </div>
+
             <div className="flex flex-col items-start justify-start pt-[0.75rem] px-[0rem] pb-[0rem]">
               <div className="relative leading-[1.5rem] whitespace-nowrap">
-                Himanshu Srivastava
+                {username}
               </div>
             </div>
           </div>
