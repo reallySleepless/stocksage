@@ -1,8 +1,6 @@
 import Chart from "chart.js/auto";
 import { ScriptableContext } from "chart.js";
 import { useRef, useEffect, useState } from "react";
-import { getHistoricalData } from "../api/historicalData";
-import { getExchangeStatus } from "../api/getExchangeStatus";
 import { predictedCompanyInterface } from "./i-n-r-container";
 
 const PredictionChartJS = ({

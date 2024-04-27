@@ -2,7 +2,7 @@ const axios = require("axios");
 
 export const getProfile = async () => {
 	const url = "https://api.upstox.com/v2/user/profile";
-	const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+	const token = localStorage.getItem("upstoxToken");
 	const headers = {
 		Accept: "application/json",
 		Authorization: `Bearer ${token}`,
