@@ -10,7 +10,6 @@ export const getMarketQuotes = async ({ isin }: { isin: string }) => {
 
   try {
     const response = await axios.get(url, { headers });
-    console.log("Response:", response.data);
     return response.data;
   } catch (error) {
     console.error(error);
