@@ -5,6 +5,8 @@ import CompanyList from "../components/company-list-container";
 import Navbar from "../components/navbar";
 import SnapshotAndGraph from "../components/snapshot-and-graph";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { getMetaData } from "../api/getMetaData";
 import { getMarketQuotes } from "../api/getMarketQuotes";
 import { getProfile } from "../api/getProfile";
@@ -105,6 +107,35 @@ const thoughtForTheDay =
   "The best time to plant a tree was 20 years ago. The second best time is now.";
 
 const Dashboard = () => {
+  const router = useRouter();
+
+  const [upstoxCode, setUpstoxCode] = useState("");
+
+  useEffect(() => {
+    const { code } = router.query; // Retrieve the 'code' query parameter
+    if (typeof code === "string") {
+      setUpstoxCode(code);
+      const { pathname, query } = router;
+      delete query.code;
+      router.replace({ pathname, query }, undefined, { shallow: true });
+    }
+  }, [router.query]);
+
+  useEffect(() => {
+    console.log("code", upstoxCode);
+    if (upstoxCode) {
+      const tokenGenerator = async () => {
+        try {
+          const token = await getToken(upstoxCode);
+          localStorage.setItem("upstoxToken", token.access_token);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      tokenGenerator();
+    }
+  }, [upstoxCode]);
+
   const [CompanyToDisplay, setCompanyToDisplay] = useState<any>(dummyData);
   console.log("CompanyToDisplay", CompanyToDisplay);
   return (

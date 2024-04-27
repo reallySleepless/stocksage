@@ -2,7 +2,7 @@ const axios = require("axios");
 
 export const getMetaData = async () => {
 	const url = "https://api.upstox.com/v2/trade/profit-loss/metadata";
-	const token = process.env.ACCESS_TOKEN;
+	const token = localStorage.getItem("upstoxToken");
 	const headers = {
 		Accept: "application/json",
 		Authorization: `Bearer ${token}`,

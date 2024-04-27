@@ -8,7 +8,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
-import PredictionChartJS from "./predictionChartJS";
+import PredictionChartJS from "./PredictionChartJS";
 
 const RecentPrediction = ({
   companyList,

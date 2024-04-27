@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-export const getToken = async () => {
+export const getToken = async (upstoxCode) => {
   const url = "https://api.upstox.com/v2/login/authorization/token";
   const headers = {
     accept: "application/json",
@@ -8,12 +8,22 @@ export const getToken = async () => {
   };
 
   const data = {
-    code: process.env.CODE,
-    client_id: process.env.API_KEY,
-    client_secret: process.env.API_SECRET,
-    redirect_uri: process.env.REDIRECT_URL,
+    code: upstoxCode,
+    client_id: process.env.NEXT_PUBLIC_API_KEY,
+    client_secret: process.env.NEXT_PUBLIC_API_SECRET,
+    redirect_uri: process.env.NEXT_PUBLIC_REDIRECT_URL,
     grant_type: "authorization_code",
   };
+
+  try {
+    const response = await axios.post(url, new URLSearchParams(data), {
+      headers,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error; // Re-throwing the error to be caught by the caller
+  }
 
   axios
     .post(url, new URLSearchParams(data), { headers })
