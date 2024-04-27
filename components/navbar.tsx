@@ -8,7 +8,6 @@ const Navbar = () => {
   useEffect(() => {
     const getProfileData = async () => {
       const res = await getProfile();
-      console.log(res);
       setUsername(res.data.user_name);
     };
 

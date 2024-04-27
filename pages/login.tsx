@@ -5,7 +5,6 @@ import { useEffect } from "react";
 const LoginPage: NextPage = () => {
   const router = useRouter();
   const api = process.env.NEXT_PUBLIC_API_KEY;
-  console.log(api);
 
   useEffect(() => {
     // Redirect user to Upstox authorization URL

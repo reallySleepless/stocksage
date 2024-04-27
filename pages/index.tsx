@@ -122,7 +122,6 @@ const Dashboard = () => {
   }, [router.query]);
 
   useEffect(() => {
-    console.log("code", upstoxCode);
     if (upstoxCode) {
       const tokenGenerator = async () => {
         try {
@@ -137,7 +136,6 @@ const Dashboard = () => {
   }, [upstoxCode]);
 
   const [CompanyToDisplay, setCompanyToDisplay] = useState<any>(dummyData);
-  console.log("CompanyToDisplay", CompanyToDisplay);
   return (
     <div className="w-full relative rounded-[32px] bg-white overflow-hidden flex flex-col items-end justify-start pt-[1.063rem] pb-[10.688rem] pr-[2.813rem] pl-[0rem] box-border gap-[3.188rem] tracking-[normal] mq800:gap-[1.563rem_3.188rem] mq1125:pr-[1.375rem] mq1125:box-border">
       <div className="w-[19.75rem] h-[3.875rem] overflow-hidden shrink-0 hidden" />
