@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { predictedCompanyInterface } from "./i-n-r-container";
 import {
   Table,
@@ -8,12 +8,22 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
+import PredictionChartJS from "./predictionChartJS";
 
 const RecentPrediction = ({
   companyList,
 }: {
   companyList: predictedCompanyInterface[];
 }) => {
+  const [isToggled, setIsToggled] = useState<[boolean, number]>([false, 0]);
+  const handleClick = (index: number) => {
+    if (isToggled[0] && isToggled[1] === index) {
+      setIsToggled([false, index]);
+      return;
+    }
+    setIsToggled([true, index]);
+  };
+
   return (
     <>
       <div className="w-[54rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full text-[1.625rem]">
@@ -45,6 +55,7 @@ const RecentPrediction = ({
                     loading="lazy"
                     alt=""
                     src="/analytics-886253-1@2x.png"
+                    onClick={() => handleClick(index)}
                   />
                 ) : (
                   <img
@@ -52,6 +63,7 @@ const RecentPrediction = ({
                     loading="lazy"
                     alt=""
                     src="/analytics-886259-1@2x.png"
+                    onClick={() => handleClick(index)}
                   />
                 )}
               </TableCell>
@@ -59,6 +71,9 @@ const RecentPrediction = ({
           ))}
         </TableBody>
       </Table>
+      {isToggled[0] && (
+        <PredictionChartJS company={companyList[isToggled[1]]} />
+      )}
     </>
   );
 };
