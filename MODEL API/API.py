@@ -15,7 +15,8 @@ def make_predictions(csv_data):
     df = pd.read_csv(csv_data, index_col="timestamp", parse_dates=["timestamp"])
     df = df["close"]
 
-    testing_df = df.head(61)
+    # Take the latest 60 prices
+    testing_df = df.head(121)
     training_df = df.drop(testing_df.index)
 
     scaler = MinMaxScaler()
@@ -40,7 +41,8 @@ def make_predictions(csv_data):
 
     predictions = regression.predict(X_test)
 
-    sequence = X_test[-1]
+    # Initialize the sequence with the latest 60 data points
+    sequence = X_test[1]
     extended_predictions = []
 
     for i in range(30):
