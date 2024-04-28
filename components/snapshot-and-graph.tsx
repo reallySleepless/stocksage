@@ -64,7 +64,6 @@ const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
     getHolding();
   }, []);
 
-
   useEffect(() => {
     const prevYearData = async () => {
       const response = await getHistoricalData({
@@ -107,7 +106,7 @@ const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
                       cLogo="/meta1-1.svg"
                       cName={item.tradingsymbol}
                       cSymbol={item.exchange}
-                      cValueChange={item.pnl}
+                      cValueChange={item.day_change_percentage}
                       cValue={`₹${item.last_price}`}
                       propPadding="0rem 0.188rem"
                       propBackgroundColor="rgba(64, 123, 255, 0.7)"

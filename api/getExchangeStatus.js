@@ -1,4 +1,5 @@
 const axios = require("axios");
+import Router from "next/router";
 
 export const getExchangeStatus = async ({ exchange }) => {
   const token = localStorage.getItem("upstoxToken");
@@ -12,6 +13,6 @@ export const getExchangeStatus = async ({ exchange }) => {
     return response.data;
   } catch (error) {
     console.error(error);
-    throw error; // Re-throwing the error to be caught by the caller
+    Router.push("/login");
   }
 };
