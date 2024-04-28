@@ -15,6 +15,7 @@ export type Depth4FrameType = {
   propWidth1?: CSSProperties["width"];
   propAlignSelf?: CSSProperties["alignSelf"];
   propHeight?: CSSProperties["height"];
+  newsUrl?: string;
 };
 
 const Depth4Frame: NextPage<Depth4FrameType> = ({
@@ -29,6 +30,7 @@ const Depth4Frame: NextPage<Depth4FrameType> = ({
   propWidth1,
   propAlignSelf,
   propHeight,
+  newsUrl,
 }) => {
   const depth4Frame1Style: CSSProperties = useMemo(() => {
     return {
@@ -94,10 +96,7 @@ const Depth4Frame: NextPage<Depth4FrameType> = ({
                   </b>
                 </div>
               </div>
-              <div
-                className="self-stretch flex flex-col items-start justify-start min-h-[2.625rem] max-w-full"
-                style={depth9Frame2Style}
-              >
+              <div className="self-stretch flex flex-col items-start justify-start min-h-[2.625rem] max-w-full">
                 <div className="self-stretch flex flex-col items-start justify-start max-w-full">
                   <div
                     className="w-[33.875rem] relative leading-[1.313rem] inline-block max-w-full"
@@ -111,20 +110,36 @@ const Depth4Frame: NextPage<Depth4FrameType> = ({
             <button className="cursor-pointer [border:none] py-[0rem] px-[1rem] bg-aliceblue h-[2rem] rounded-xl overflow-hidden shrink-0 flex flex-row items-center justify-center box-border">
               <div className="bg-aliceblue overflow-hidden flex flex-col items-start justify-start">
                 <div className="flex flex-col items-start justify-start">
-                  <div className="relative text-[0.875rem] leading-[1.313rem] font-medium font-work-sans text-darkslateblue-100 text-left">
-                    Read more
+                  <div className="flex flex-col items-start justify-start">
+                    <a
+                      href={newsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative text-[0.875rem] leading-[1.313rem] font-medium font-work-sans text-darkslateblue-100 text-left"
+                    >
+                      Read more
+                    </a>
                   </div>
                 </div>
               </div>
             </button>
           </div>
           <div className="w-[18.188rem] flex flex-row items-start justify-start min-w-[18.188rem] mq1000:flex-1">
-            <img
-              className="h-[8.231rem] flex-1 relative rounded-xl max-w-full overflow-hidden object-cover mq1000:flex-1"
-              alt=""
-              src={depth8Frame0}
-              style={depth8Frame0Style}
-            />
+            {depth8Frame0 ? (
+              <img
+                className="h-[8.231rem] flex-1 relative rounded-xl max-w-full overflow-hidden object-cover mq1000:flex-1"
+                alt=""
+                src={depth8Frame0}
+                style={depth8Frame0Style}
+              />
+            ) : (
+              <img
+                className="h-[8.231rem] flex-1 relative rounded-xl max-w-full overflow-hidden object-cover mq1000:flex-1"
+                alt=""
+                src={"/depth-8-frame-0-1@2x.png"}
+                style={depth8Frame0Style}
+              />
+            )}
           </div>
         </div>
       </div>
