@@ -3,30 +3,32 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    require.resolve("react-widgets/styles.css"),
   ],
+
   theme: {
     extend: {
       colors: {
         white: "#fff",
         whitesmoke: "#f8fafb",
         royalblue: {
-          "100": "#407bff",
-          "200": "rgba(64, 123, 255, 0.7)",
+          100: "#407bff",
+          200: "rgba(64, 123, 255, 0.7)",
         },
         crimson: "#e8464c",
         darkslateblue: {
-          "100": "#2d56b2",
-          "200": "rgba(45, 86, 178, 0.7)",
+          100: "#2d56b2",
+          200: "rgba(45, 86, 178, 0.7)",
         },
         cornflowerblue: {
-          "100": "#7aa3ff",
-          "200": "#4770cc",
+          100: "#7aa3ff",
+          200: "#4770cc",
         },
         yellowgreen: "#77b900",
         blue: "#6425fe",
         gray: {
-          "100": "rgba(255, 255, 255, 0.8)",
-          "200": "rgba(131, 131, 131, 0.5)",
+          100: "rgba(255, 255, 255, 0.8)",
+          200: "rgba(131, 131, 131, 0.5)",
         },
         lime: "#42ff00",
         red: "#ff2f2f",
@@ -70,4 +72,5 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
+  plugins: [require("react-widgets-tailwind")],
 };
