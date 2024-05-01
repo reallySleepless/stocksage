@@ -12,26 +12,26 @@ const MyStocksHero = ({
   const [investedValue, setInvestedValue] = useState<number>(0);
   const [returnValue, setReturnValue] = useState<number>(0);
 
-  useEffect(() => {
-    if (process.env.MODE === "PRODUCTION") {
-      let invested_value = 0;
-      let return_value = 0;
-      if (selectedCompanyIsin === undefined) {
-        holdings.forEach((holding: any) => {
-          invested_value += holding.average_price * holding.quantity;
-          return_value += holding.pnl;
-        });
-        setInvestedValue(invested_value);
-        setReturnValue(return_value);
-      } else {
-        const holding = holdings.find(
-          (holding: any) => holding.isin === selectedCompanyIsin
-        );
-        setInvestedValue(holding.average_price * holding.quantity);
-        setReturnValue(holding.pnl);
-      }
-    }
-  }, [holdings, selectedCompanyIsin]);
+  // useEffect(() => {
+  //   if (process.env.NEXT_PUBLIC_MODE === "PRODUCTION") {
+  //     let invested_value = 0;
+  //     let return_value = 0;
+  //     if (selectedCompanyIsin === undefined) {
+  //       holdings.forEach((holding: any) => {
+  //         invested_value += holding.average_price * holding.quantity;
+  //         return_value += holding.pnl;
+  //       });
+  //       setInvestedValue(invested_value);
+  //       setReturnValue(return_value);
+  //     } else {
+  //       const holding = holdings.find(
+  //         (holding: any) => holding.isin === selectedCompanyIsin
+  //       );
+  //       setInvestedValue(holding.average_price * holding.quantity);
+  //       setReturnValue(holding.pnl);
+  //     }
+  //   }
+  // }, [holdings, selectedCompanyIsin]);
 
   return (
     <div className="w-full flex flex-row justify-center py-[0rem] box-border max-w-full text-left text-[2.813rem] text-black font-plus-jakarta-sans">

@@ -36,7 +36,9 @@ const CompanyListContainer = ({
         setMongoWatchlistId(watchlist?._id);
       }
     };
-    getUserWishList();
+    if (mongo_user_id) {
+      getUserWishList();
+    }
   }, []);
 
   useEffect(() => {
@@ -50,7 +52,6 @@ const CompanyListContainer = ({
     updateWishlist();
   }, [selectedCompanies]);
 
-  console.log("Selected Companies", selectedCompanies);
   const [selectedCompany, setSelectedCompany] = useState("");
 
   const handleSelect = async (companyName: string) => {
