@@ -32,6 +32,10 @@ module.exports = {
         },
         lime: "#42ff00",
         red: "#ff2f2f",
+        gainsboro: {
+          100: "#d1dee6",
+          200: "#d9d9d9",
+        },
       },
       spacing: {},
       fontFamily: {
