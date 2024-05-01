@@ -12,7 +12,6 @@ const FrameWithText: NextPage = () => {
     const getNewsData = async () => {
       const data = await getNews();
       setNewsData(data.articles);
-      console.log("Data inside news page", data);
     };
 
     getNewsData();
@@ -163,66 +162,6 @@ const FrameWithText: NextPage = () => {
                 </button>
               )}
             </div>
-            {/* <div className="flex-1 flex flex-col items-start justify-start max-w-[calc(100%_-_307px)] text-[0.875rem] text-cornflowerblue-100 mq975:max-w-full">
-              {newsData.map((news: any, index: number) => {
-                return (
-                  <Depth4Frame
-                    key={index}
-                    cNBC1hAgo={news.source.name}
-                    stockFuturesAreFlatAfterS={news.title}
-                    uSStockFuturesWereFlatInO={news.description}
-                    depth8Frame0={news.urlToImage}
-                    propMarginTop="-4.25rem"
-                    propMinHeight="2.5rem"
-                    propWidth="34.744rem"
-                    propMinHeight1="5.25rem"
-                    propWidth1="unset"
-                    propAlignSelf="stretch"
-                    propHeight="10.563rem"
-                    newsUrl={news.url}
-                  />
-                );
-              })}
-            </div> */}
-            {/* <Depth4Frame
-                cNBC1hAgo="Yahoo Finance · 2h ago"
-                stockFuturesAreFlatAfterS="Dow Jones Futures: Stock Market Rally Extended On Fed Rate Hopes; Tesla, Apple, Microsoft, Nvidia Lead Buy Points"
-                uSStockFuturesWereFlatInO={`The stock market rally extended gains as the S&P 500 index and Nasdaq composite hit record highs. Fed chief Jerome Powell said the central bank will act as appropriate on interest rates. Tesla, Apple, Microsoft and Nvidia are at or near buy points.`}
-                depth8Frame0="/depth-8-frame-0-1@2x.png"
-                propMarginTop="-4.25rem"
-                propMinHeight="2.5rem"
-                propWidth="34.744rem"
-                propMinHeight1="5.25rem"
-                propWidth1="unset"
-                propAlignSelf="stretch"
-                propHeight="10.563rem"
-              />
-              <Depth4Frame
-                cNBC1hAgo="Yahoo Finance · 2h ago"
-                stockFuturesAreFlatAfterS="Dow Jones Futures: Stock Market Rally Extended On Fed Rate Hopes; Tesla, Apple, Microsoft, Nvidia Lead Buy Points"
-                uSStockFuturesWereFlatInO={`The stock market rally extended gains as the S&P 500 index and Nasdaq composite hit record highs. Fed chief Jerome Powell said the central bank will act as appropriate on interest rates. Tesla, Apple, Microsoft and Nvidia are at or near buy points.`}
-                depth8Frame0="/depth-8-frame-0-1@2x.png"
-                propMarginTop="-4.25rem"
-                propMinHeight="2.5rem"
-                propWidth="34.744rem"
-                propMinHeight1="5.25rem"
-                propWidth1="unset"
-                propAlignSelf="stretch"
-                propHeight="10.563rem"
-              />
-              <Depth4Frame
-                cNBC1hAgo="Yahoo Finance · 2h ago"
-                stockFuturesAreFlatAfterS="Dow Jones Futures: Stock Market Rally Extended On Fed Rate Hopes; Tesla, Apple, Microsoft, Nvidia Lead Buy Points"
-                uSStockFuturesWereFlatInO={`The stock market rally extended gains as the S&P 500 index and Nasdaq composite hit record highs. Fed chief Jerome Powell said the central bank will act as appropriate on interest rates. Tesla, Apple, Microsoft and Nvidia are at or near buy points.`}
-                depth8Frame0="/depth-8-frame-0-1@2x.png"
-                propMarginTop="-4.25rem"
-                propMinHeight="2.5rem"
-                propWidth="34.744rem"
-                propMinHeight1="5.25rem"
-                propWidth1="unset"
-                propAlignSelf="stretch"
-                propHeight="10.563rem"
-              /> */}
           </div>
         </div>
         {/* <div className="self-stretch flex flex-row items-start justify-center py-[0rem] px-[1.25rem]">
