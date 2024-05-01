@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import { useMemo, type CSSProperties } from "react";
 
 export type FrameComponentType = {
-  aPIKey?: string;
-  enterTheAPIKeyPlaceholder?: string;
+  heading?: string;
+  description?: string;
   rectangle1079?: string;
 
   /** Style props */
@@ -12,8 +12,8 @@ export type FrameComponentType = {
 };
 
 const FrameComponent: NextPage<FrameComponentType> = ({
-  aPIKey,
-  enterTheAPIKeyPlaceholder,
+  heading,
+  description,
   rectangle1079,
   propGap,
   propTop,
@@ -36,20 +36,10 @@ const FrameComponent: NextPage<FrameComponentType> = ({
       style={frameDiv3Style}
     >
       <div className="self-stretch relative leading-[100%] mq450:text-[1.188rem] mq450:leading-[1.188rem]">
-        {aPIKey}
+        {heading}
       </div>
-      <div className="w-[31.625rem] h-[3.75rem] relative max-w-full">
-        <input
-          className="w-full [border:none] [outline:none] font-plus-jakarta-sans text-[1.5rem] bg-[transparent] absolute top-[0.875rem] left-[1.125rem] leading-[100%] text-steelblue-100 text-left inline-block h-[1.5rem] p-0 mq450:text-[1.188rem] mq450:leading-[1.188rem]"
-          placeholder={enterTheAPIKeyPlaceholder}
-          type="text"
-          style={enterTheAPIStyle}
-        />
-        <img
-          className="absolute top-[0rem] left-[0rem] w-full h-full z-[1]"
-          alt=""
-          src={rectangle1079}
-        />
+      <div className="w-[31.625rem] h-[3.75rem] relative max-w-full bg-[#b5deea] flex items-center">
+        <p className="px-3">{description}</p>
       </div>
     </div>
   );

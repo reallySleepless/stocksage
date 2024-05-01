@@ -12,6 +12,7 @@ import { getMarketQuotes } from "../util/getMarketQuotes";
 import { getProfile } from "../util/getProfile";
 import { getToken } from "../util/getToken";
 import { getQuotes } from "../util/getQuotes";
+import { createUser, getUser } from "../util/user";
 
 const dummyData = {
   status: "success",
@@ -112,6 +113,28 @@ const Dashboard = () => {
 
   const [upstoxCode, setUpstoxCode] = useState("");
   const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getProfileData = async () => {
+      try {
+        const profile = await getProfile();
+        const userObj = {
+          name: profile?.data?.user_name,
+          email: profile?.data?.email,
+          user_id: profile?.data?.user_id,
+        };
+        let profileFromDatabase = await getUser(profile?.data?.user_id);
+        console.log(profileFromDatabase);
+        if (!profileFromDatabase) {
+          profileFromDatabase = await createUser(userObj);
+        }
+        localStorage.setItem("mongo_user_id", profileFromDatabase?._id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProfileData();
+  }, []);
 
   useEffect(() => {
     const { code } = router.query; // Retrieve the 'code' query parameter

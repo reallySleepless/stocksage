@@ -8,8 +8,11 @@ import jsonFile from "../DataFiles/NSE.json";
 import { getExchangeStatus } from "../util/getExchangeStatus";
 import { getHistoricalData } from "../util/historicalData";
 import axios from "axios";
+import { getUserpredictions, createprediction } from "../util/prediction";
+import { user } from "@nextui-org/react";
 
 export interface predictedCompanyInterface {
+  user_id: string | null | undefined;
   companyName: string | undefined;
   dateWhenPredicted: Date;
   currentPrice: number;
@@ -21,9 +24,18 @@ const INRContainer: NextPage = () => {
   const [selectedCompany, setSelectedCompany] = useState("");
   const [currentDate, setCurrentDate] = useState(new Date());
   const [TenYearBackDate, setTenYearBackDate] = useState(new Date());
-  const [selectedCompanies, setSelectedCompanies] = useState<
-    predictedCompanyInterface[]
-  >([]); // Just for a timing being, will be removed later
+  const [mongo_user_id, setMongoUserId] = useState<string | null | undefined>();
+  const [selectedCompanies, setSelectedCompanies] = useState<any[]>([]); // Just for a timing being, will be removed later
+
+  useEffect(() => {
+    const mongo_user_id_temp = localStorage.getItem("mongo_user_id");
+    setMongoUserId(mongo_user_id_temp);
+    const getAllPrediction = async () => {
+      const data = await getUserpredictions(mongo_user_id_temp);
+      setSelectedCompanies(data);
+    };
+    getAllPrediction();
+  }, []);
 
   const interval = "day";
 
@@ -80,6 +92,7 @@ const INRContainer: NextPage = () => {
       const prediction = response.data.extended_predictions;
       const predictedPrice = prediction[prediction.length - 1];
       const predictionObject = {
+        user_id: mongo_user_id,
         companyName: companyName,
         dateWhenPredicted: new Date(),
         currentPrice: currentPrice,
@@ -87,16 +100,19 @@ const INRContainer: NextPage = () => {
         predictionData: prediction,
       };
 
-      const index = selectedCompanies.findIndex(
-        (item) => item.companyName === companyName
-      );
+      const data = await createprediction(predictionObject);
+      const data1 = await getUserpredictions(mongo_user_id);
+      setSelectedCompanies(data1);
 
-      if (index !== -1) {
-        selectedCompanies.splice(index, 1);
-      }
-      setSelectedCompanies((prev) => [...prev, predictionObject]);
+      // const index = selectedCompanies.findIndex(
+      //   (item) => item.companyName === companyName
+      // );
 
-      console.log("Prediction Object:", predictionObject);
+      // if (index !== -1) {
+      //   selectedCompanies.splice(index, 1);
+      // }
+      // setSelectedCompanies((prev) => [...prev, predictionObject]);
+
     } catch (error) {
       console.error("Error:", error);
     }
@@ -135,6 +151,7 @@ const INRContainer: NextPage = () => {
     });
     convertToCSV(response.data.candles, companyData?.name);
   };
+
 
   return (
     <section className="w-[107.575rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full text-left text-[1.5rem] text-black font-plus-jakarta-sans">

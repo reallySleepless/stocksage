@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (id) {
       const prediction = await db
         .collection("predictions")
-        .findOne({ _id: new ObjectId(id) });
+        .find({ _id: new ObjectId(id) });
       return res.status(200).json({ prediction });
     }
     if (user_id) {

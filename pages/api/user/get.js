@@ -10,12 +10,10 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     const { id } = req.query;
-    console.log(id);
     if (id) {
       const user = await db.collection("users").findOne({
-        _id: new ObjectId(id),
+        user_id: id,
       });
-      console.log("USER", user);
       return res.status(200).json({ user });
     }
     const users = await db.collection("users").find({}).toArray();

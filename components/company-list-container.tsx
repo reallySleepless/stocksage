@@ -3,6 +3,11 @@ import { Combobox } from "react-widgets/cjs";
 import jsonFile from "../DataFiles/NSE.json";
 import "react-widgets/styles.css";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  getUserWatchlists,
+  createWatchlist,
+  updateWatchlist,
+} from "../util/watchlist";
 
 const CompanyListContainer = ({
   setCompanyToDisplay,
@@ -12,9 +17,44 @@ const CompanyListContainer = ({
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([
     "TATA MOTORS LIMITED",
   ]);
+
+  const [mongo_watchlist_id, setMongoWatchlistId] = useState("");
+
+  useEffect(() => {
+    const mongo_user_id = localStorage.getItem("mongo_user_id");
+    const getUserWishList = async () => {
+      const data = await getUserWatchlists(mongo_user_id);
+      if (data[0]) {
+        setMongoWatchlistId(data[0]?._id);
+        setSelectedCompanies(data[0]?.wishlist_array);
+      } else {
+        const watchListObj = {
+          user_id: mongo_user_id,
+          wishlist_array: selectedCompanies,
+        };
+        const watchlist = await createWatchlist(watchListObj);
+        setMongoWatchlistId(watchlist?._id);
+      }
+    };
+    if (mongo_user_id) {
+      getUserWishList();
+    }
+  }, []);
+
+  useEffect(() => {
+    const updateWishlist = async () => {
+      const watchListObj: any = {
+        user_id: localStorage.getItem("mongo_user_id"),
+        wishlist_array: selectedCompanies,
+      };
+      const data = await updateWatchlist(mongo_watchlist_id, watchListObj);
+    };
+    updateWishlist();
+  }, [selectedCompanies]);
+
   const [selectedCompany, setSelectedCompany] = useState("");
 
-  const handleSelect = (companyName: string) => {
+  const handleSelect = async (companyName: string) => {
     setSelectedCompanies([...selectedCompanies, companyName]);
     setSelectedCompany("");
   };
