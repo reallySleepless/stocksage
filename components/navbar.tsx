@@ -28,7 +28,7 @@ const Navbar = () => {
             <div className="flex flex-row w-full justify-around py-[0rem] px-[1.625rem] box-border max-w-full">
               <div className="flex flex-row items-start justify-start gap-[3rem] max-w-full mq800:gap-[3rem_1.5rem]">
                 <a
-                  className="no-underline flex flex-row items-start justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
+                  className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
                   href="/"
                 >
                   <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
@@ -39,85 +39,80 @@ const Navbar = () => {
                       src="/vuesaxboldelement4.svg"
                     />
                   </div>
-                  <div className="flex flex-col items-start justify-start gap-[0.688rem]">
-                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap">
+                  <div className="flex flex-col  justify-start gap-[0.688rem]">
+                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap text-center">
                       Dashboard
                     </h1>
-                    <div className="flex flex-row items-start justify-start py-[0rem] px-[0.188rem]">
-                      <img
-                        className="h-[0.063rem] w-[9.313rem] relative object-contain"
-                        alt=""
-                      />
-                    </div>
                   </div>
                 </a>
                 <a
-                  className="no-underline flex flex-col items-start justify-start pt-[0.125rem] pb-[0rem] pr-[0.688rem] pl-[0rem]"
+                  className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
                   href="#"
                 >
-                  <div className="flex flex-row items-start justify-start gap-[0.938rem] cursor-pointer">
-                    <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
-                      <img
-                        className="w-[1.5rem] h-[1.5rem] relative overflow-hidden shrink-0"
-                        loading="lazy"
-                        alt=""
-                        src="/calendar.svg"
-                      />
-                    </div>
-                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit cursor-pointer">
+                  <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
+                    <img
+                      className="w-[1.5rem] h-[1.5rem] relative"
+                      loading="lazy"
+                      alt=""
+                      src="/calendar.svg"
+                    />
+                  </div>
+                  <div className="flex flex-col  justify-start gap-[0.688rem]">
+                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap text-center">
                       MyStocks
                     </h1>
                   </div>
                 </a>
                 <a
-                  className="no-underline flex flex-row items-start justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
+                  className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
                   href="/prediction-page"
                 >
-                  {" "}
-                  <div className="flex flex-row items-start justify-start gap-[0.938rem] cursor-pointer">
-                    <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
-                      <img
-                        className="w-[1.5rem] h-[1.5rem] relative cursor-pointer"
-                        loading="lazy"
-                        alt=""
-                        src="/vuesaxtwotonesms.svg"
-                      />
-                    </div>
-                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit">
+                  <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
+                    <img
+                      className="w-[1.5rem] h-[1.5rem] relative"
+                      loading="lazy"
+                      alt=""
+                      src="/vuesaxtwotonesms.svg"
+                    />
+                  </div>
+                  <div className="flex flex-col  justify-start gap-[0.688rem]">
+                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap text-center">
                       Prediction
                     </h1>
                   </div>
                 </a>
                 <a
-                  className="no-underline flex flex-row items-start justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
+                  className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
                   href="/news-page"
                 >
-                  {" "}
-                  <div className="flex flex-row items-start justify-start gap-[0.938rem] cursor-pointer">
-                    <input
-                      className="m-0 h-[1.625rem] w-[1.5rem]"
-                      type="checkbox"
+                  <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
+                    <img
+                      className="w-[1.5rem] h-[1.5rem] relative"
+                      loading="lazy"
+                      alt=""
+                      src="/vuesaxtwotonesetting.svg"
                     />
-                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap">
+                  </div>
+                  <div className="flex flex-col  justify-start gap-[0.688rem]">
+                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap text-center">
                       Research Portal
                     </h1>
                   </div>
                 </a>
                 <a
-                  className="no-underline flex flex-row items-start justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
+                  className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
                   href="#"
                 >
-                  {" "}
-                  <div className="flex flex-row items-start justify-start gap-[0.938rem] cursor-pointer">
-                    <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
-                      <img
-                        className="w-[1.5rem] h-[1.5rem] relative"
-                        loading="lazy"
-                        alt=""
-                        src="/vuesaxtwotonesetting.svg"
-                      />
-                    </div>
-                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit">
+                  <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
+                    <img
+                      className="w-[1.5rem] h-[1.5rem] relative"
+                      loading="lazy"
+                      alt=""
+                      src="/vuesaxtwotonesetting.svg"
+                    />
+                  </div>
+                  <div className="flex flex-col  justify-start gap-[0.688rem]">
+                    <h1 className="m-0 relative text-inherit tracking-[0.03em] leading-[100%] font-semibold font-inherit whitespace-nowrap text-center">
                       Settings
                     </h1>
                   </div>
