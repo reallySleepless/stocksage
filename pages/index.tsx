@@ -111,6 +111,24 @@ const Dashboard = () => {
   const router = useRouter();
 
   const [upstoxCode, setUpstoxCode] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/user/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: "John Doe" }),
+      });
+      const data = await res.json();
+      console.log(data);
+      // Process the data from the API response
+      setData(data);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const { code } = router.query; // Retrieve the 'code' query parameter
@@ -135,8 +153,6 @@ const Dashboard = () => {
       tokenGenerator();
     }
   }, [upstoxCode]);
-
-  
 
   const [CompanyToDisplay, setCompanyToDisplay] = useState<any>(dummyData);
   return (
