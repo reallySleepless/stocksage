@@ -2,10 +2,10 @@
 
 import Snapshot from "./snapshot";
 import WatchlistCards from "./watchlist-cards";
-import { getHistoricalData } from "../api/historicalData";
+import { getHistoricalData } from "../util/historicalData";
 import { useEffect, useState, useRef } from "react";
 import ChartJS from "../pages/chartJS";
-import { getHoldings } from "../api/getHoldings";
+import { getHoldings } from "../util/getHoldings";
 
 const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
   const [historicalData, setHistoricalData] = useState<any>([]);

@@ -11,7 +11,6 @@ export type Depth4FrameType = {
   propMarginTop?: CSSProperties["marginTop"];
   propWidth?: CSSProperties["width"];
   propPadding1?: CSSProperties["padding"];
-  propDebugCommit?: CSSProperties["debugCommit"];
   propMinWidth?: CSSProperties["minWidth"];
   propMinWidth1?: CSSProperties["minWidth"];
   propMinWidth2?: CSSProperties["minWidth"];
@@ -25,7 +24,6 @@ const Depth4Frame: NextPage<Depth4FrameType> = ({
   propMarginTop,
   propWidth,
   propPadding1,
-  propDebugCommit,
   propMinWidth,
   propMinWidth1,
   propMinWidth2,
@@ -42,9 +40,8 @@ const Depth4Frame: NextPage<Depth4FrameType> = ({
     return {
       width: propWidth,
       padding: propPadding1,
-      debugCommit: propDebugCommit,
     };
-  }, [propWidth, propPadding1, propDebugCommit]);
+  }, [propWidth, propPadding1]);
 
   const depth6Frame1Style: CSSProperties = useMemo(() => {
     return {
