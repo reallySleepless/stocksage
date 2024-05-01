@@ -24,30 +24,43 @@ const NewsComponent = () => {
   //   fetchNews();
   // }, []);
 
+  const [quotes, setQuotes] = useState<any>(null);
+
   useEffect(() => {
     const getBussinessQuotes = async () => {
       const res = await getQuotes();
-      console.log(res);
+      console.log("response:", res);
+      setQuotes(res[0]);
     };
     getBussinessQuotes();
   }, []);
 
+  console.log("quotes:", quotes);
   return (
     <div className="w-[35.563rem] flex flex-col items-start justify-start pt-[1.313rem] pb-[0rem] pr-[0.688rem] pl-[0rem] box-border max-w-full">
       <div className="self-stretch rounded-[14px] bg-whitesmoke overflow-hidden flex flex-col items-start justify-start pt-[1.063rem] pb-[0rem] pr-[0.938rem] pl-[0.813rem] box-border gap-[1.438rem] max-w-full z-[1]">
         <div className="self-stretch flex flex-col items-start justify-start gap-[0.313rem] max-w-full">
           <div className="w-[30.688rem] flex flex-row items-start justify-start pt-[0rem] px-[0rem] pb-[0.375rem] box-border max-w-full text-[1.375rem]">
             <h2 className="m-0 flex-1 relative text-inherit tracking-[0.8px] leading-[1.75rem] font-normal font-inherit inline-block max-w-full mq450:text-[1.125rem] mq450:leading-[1.375rem]">
-              Today&apos;s Opinion
+              Today&apos;s Quote
             </h2>
           </div>
           <>
-            <div className="w-[30.688rem] flex flex-col items-start justify-start gap-[0.313rem] max-w-full">
-              <h3 className="m-0 flex-1 relative text-inherit tracking-[0.8px] leading-[1.75rem] font-normal font-inherit inline-block max-w-full mq450:text-[1.125rem] mq450:leading-[1.375rem]">
-                Loading...
-              </h3>
-            </div>
-            <div className="self-stretch pt-4 h-[0rem] flex flex-row items-start justify-start py-[0rem] pr-[0.188rem] pl-[1.5rem] box-border max-w-full">
+            {!quotes ? (
+              <div className="w-[30.688rem] flex flex-col items-start justify-start gap-[0.313rem] max-w-full">
+                <h3 className="m-0 flex-1 relative text-inherit tracking-[0.8px] leading-[1.75rem] font-normal font-inherit inline-block max-w-full mq450:text-[1.125rem] mq450:leading-[1.375rem]">
+                  Loading...
+                </h3>
+              </div>
+            ) : (
+              <div className="w-[30.688rem] flex flex-col items-start justify-start gap-[0.313rem] max-w-full">
+                <h3 className="m-0 flex-1 relative text-inherit tracking-[0.8px] leading-[1.75rem] font-normal font-inherit inline-block max-w-full mq450:text-[1.125rem] mq450:leading-[1.375rem]">
+                  {quotes?.quote}
+                </h3>
+                <p> - {quotes.author}</p>
+              </div>
+            )}
+            <div className="self-stretch pt-4 h-[0rem] flex flex-row items-start justify-start py-[0rem] pr-[0.188rem] box-border max-w-full">
               <div className="h-[0.063rem] flex-1 relative box-border max-w-full border-t-[1px] border-solid border-royalblue-100" />
             </div>
           </>
