@@ -1,8 +1,8 @@
 import Chart from "chart.js/auto";
 import { ScriptableContext } from "chart.js";
 import { useRef, useEffect, useState } from "react";
-import { getHistoricalData } from "./api/historicalData";
-import { getExchangeStatus } from "./api/getExchangeStatus";
+import { getHistoricalData } from "../util/historicalData";
+import { getExchangeStatus } from "../util/getExchangeStatus";
 
 const intervalObj = {
   "1D": "1minute",

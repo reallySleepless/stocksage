@@ -1,8 +1,8 @@
 import WatchlistItem from "./watchlist-item";
 import jsonFile from "../DataFiles/NSE.json";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { getMarketQuotes } from "../pages/api/getMarketQuotes";
-import { getExchangeStatus } from "../pages/api/getExchangeStatus";
+import { getMarketQuotes } from "../util/getMarketQuotes";
+import { getExchangeStatus } from "../util/getExchangeStatus";
 
 interface Company {
   segment: string;

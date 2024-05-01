@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getQuotes } from "../pages/api/getQuotes";
+import { getQuotes } from "../util/getQuotes";
 
 const NewsComponent = () => {
   // const [isNewsFetched, setIsNewsFetched] = useState(false);

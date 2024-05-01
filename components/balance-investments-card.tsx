@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getFundAndMargin } from "../pages/api/getFundAndMargin";
+import { getFundAndMargin } from "../util/getFundAndMargin";
 
 const BalanceInvestmentCard = () => {
   const [balance, setBalance] = useState(0);
