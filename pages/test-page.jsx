@@ -12,7 +12,17 @@ import {
   getWatchlist,
   updateWatchlist,
   deleteWatchlist,
+  getUserWatchlists
 } from "../util/watchlist";
+
+import {
+  createprediction,
+  getAllpredictions,
+  getprediction,
+  getUserpredictions,
+  updateprediction,
+  deleteprediction
+} from "../util/prediction";
 
 function TestPage() {
   // test data

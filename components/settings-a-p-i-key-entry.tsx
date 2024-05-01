@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import FrameComponent from "./settings-frame-component";
 import { useEffect, useState } from "react";
-import { getProfile } from "../api/getProfile";
+import { getProfile } from "../util/getProfile";
 
 const APIKeyEntry: NextPage = () => {
   const [profile, setProfile] = useState<any>(null);

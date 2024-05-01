@@ -30,7 +30,7 @@ export async function getprediction(id) {
 
 // get all predictions for a specific user
 export async function getUserpredictions(user_id) {
-  const res = await fetch(`/api/prediction/get?user_id=${userId}`);
+  const res = await fetch(`/api/prediction/get?user_id=${user_id}`);
   const data = await res.json();
   return data.predictions;
 }

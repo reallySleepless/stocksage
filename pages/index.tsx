@@ -12,6 +12,7 @@ import { getMarketQuotes } from "../util/getMarketQuotes";
 import { getProfile } from "../util/getProfile";
 import { getToken } from "../util/getToken";
 import { getQuotes } from "../util/getQuotes";
+import { createUser, getUser } from "../util/user";
 
 const dummyData = {
   status: "success",
@@ -114,20 +115,25 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/api/user/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: "John Doe" }),
-      });
-      const data = await res.json();
-      console.log(data);
-      // Process the data from the API response
-      setData(data);
-    }
-    fetchData();
+    const getProfileData = async () => {
+      try {
+        const profile = await getProfile();
+        const userObj = {
+          name: profile.data.user_name,
+          email: profile.data.email,
+          user_id: profile.data.user_id,
+        };
+        let profileFromDatabase = await getUser(profile.data.user_id);
+        if (!profileFromDatabase) {
+          console.log("Creating user", userObj);
+          profileFromDatabase = await createUser(userObj);
+        }
+        localStorage.setItem("mongo_user_id", profileFromDatabase?._id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProfileData();
   }, []);
 
   useEffect(() => {

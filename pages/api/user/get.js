@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     console.log(id);
     if (id) {
       const user = await db.collection("users").findOne({
-        _id: new ObjectId(id),
+        user_id: id,
       });
       console.log("USER", user);
       return res.status(200).json({ user });

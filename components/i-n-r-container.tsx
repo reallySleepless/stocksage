@@ -8,6 +8,7 @@ import jsonFile from "../DataFiles/NSE.json";
 import { getExchangeStatus } from "../util/getExchangeStatus";
 import { getHistoricalData } from "../util/historicalData";
 import axios from "axios";
+import { getUserpredictions } from "../util/prediction";
 
 export interface predictedCompanyInterface {
   companyName: string | undefined;
@@ -24,6 +25,15 @@ const INRContainer: NextPage = () => {
   const [selectedCompanies, setSelectedCompanies] = useState<
     predictedCompanyInterface[]
   >([]); // Just for a timing being, will be removed later
+
+  useEffect(() => {
+    const getAllPrediction = async () => {
+      const mongo_user_id = localStorage.getItem("mongo_user_id");
+      const data = await getUserpredictions(mongo_user_id);
+      console.log("Data:", data);
+    };
+    getAllPrediction();
+  }, []);
 
   const interval = "day";
 
