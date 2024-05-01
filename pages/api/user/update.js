@@ -11,6 +11,16 @@ export default async function handler(req, res) {
   if (req.method === "PUT") {
     const { id } = req.query;
     const updatedUser = JSON.parse(req.body);
+
+    // check if the user exists
+    const userExists = await db
+      .collection("users")
+      .findOne({ _id: new ObjectId(id) });
+
+    if (!userExists) {
+      return res.status(400).json({ error: "User does not exist" });
+    }
+
     const user = await db
       .collection("users")
       .updateOne({ _id: new ObjectId(id) }, { $set: { ...updatedUser } });

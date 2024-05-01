@@ -29,8 +29,8 @@ export async function getWatchlist(id) {
 }
 
 // get all watchlists for a specific user
-export async function getUserWatchlists(userId) {
-  const res = await fetch(`/api/watchlist/get?userId=${userId}`);
+export async function getUserWatchlists(user_id) {
+  const res = await fetch(`/api/watchlist/get?user_id=${userId}`);
   const data = await res.json();
   return data.watchlists;
 }

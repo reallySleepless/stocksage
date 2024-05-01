@@ -11,6 +11,16 @@ export default async function handler(req, res) {
   if (req.method === "PUT") {
     const { id } = req.query;
     const updatedwatchlist = JSON.parse(req.body);
+
+    // check if the watchlist exists
+    const watchlistExists = await db
+      .collection("watchlists")
+      .findOne({ _id: new ObjectId(id) });
+
+    if (!watchlistExists) {
+      return res.status(400).json({ error: "Watchlist does not exist" });
+    }
+
     const watchlist = await db
       .collection("watchlists")
       .updateOne({ _id: new ObjectId(id) }, { $set: { ...updatedwatchlist } });
