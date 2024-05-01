@@ -18,7 +18,7 @@ const FrameWithText: NextPage = () => {
   }, []);
 
   const showMoreNews = () => {
-    setVisibleNewsCount(newsData.length);
+    setVisibleNewsCount(visibleNewsCount + 5);
   };
 
   return (
