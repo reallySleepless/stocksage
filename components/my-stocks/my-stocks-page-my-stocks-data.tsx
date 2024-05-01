@@ -39,8 +39,6 @@ const MyStocksData = ({
     setSelectedCompanyIsin(isin);
   }, [selectedCompany]);
 
-  console.log("isin", selectedCompanyIsin);
-
   return (
     <div className="flex flex-row items-start justify-center gap-[3.375rem] max-w-full text-left text-[1.375rem] text-gray-300 font-work-sans mq950:gap-[1.688rem] mq1900:flex-wrap">
       <div className="w-[20.313rem] flex flex-col items-start justify-start pt-[0.25rem] pb-[0rem] pr-[1.25rem] pl-[0rem] box-border">
