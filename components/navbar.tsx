@@ -47,7 +47,7 @@ const Navbar = () => {
                 </a>
                 <a
                   className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
-                  href="#"
+                  href="/my-stocks-page"
                 >
                   <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
                     <img
@@ -101,7 +101,7 @@ const Navbar = () => {
                 </a>
                 <a
                   className="no-underline flex flex-row items-center justify-start py-[0rem] pr-[0.625rem] pl-[0rem] gap-[1rem] cursor-pointer"
-                  href="#"
+                  href="/settings"
                 >
                   <div className="flex flex-col items-start justify-start pt-[0.125rem] px-[0rem] pb-[0rem]">
                     <img
