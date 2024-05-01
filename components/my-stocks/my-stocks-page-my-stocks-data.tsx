@@ -1,6 +1,6 @@
 import Depth4Frame from "./my-stocks-page-depth4-frame";
 import { Dispatch, useEffect, useState } from "react";
-import { getTrades } from "../../api/getTrades";
+import { getTrades } from "../../util/getTrades";
 import RecentStocksCard from "./recent-stocks-card";
 import Combobox from "react-widgets/Combobox";
 import "react-widgets/styles.css";

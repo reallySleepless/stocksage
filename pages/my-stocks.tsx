@@ -3,7 +3,7 @@ import MyStocksData from "../components/my-stocks/my-stocks-page-my-stocks-data"
 import MyStocksHero from "../components/my-stocks/my-stocks-page-my-stocks-hero";
 import Navbar from "../components/navbar";
 import { useEffect, useState } from "react";
-import { getHoldings } from "../api/getHoldings";
+import { getHoldings } from "../util/getHoldings";
 
 const MyStocksPage: NextPage = () => {
   const [holdings, setHoldings] = useState<any>([]);
