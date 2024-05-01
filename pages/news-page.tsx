@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import FrameWithText from "../components/frame-with-text";
 import Navbar from "../components/navbar";
 import { useEffect } from "react";
-import getNews from "../api/getNews";
+import getNews from "../util/getNews";
 
 const NewsPage: NextPage = () => {
   return (

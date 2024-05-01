@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Depth5Frame from "./depth5-frame";
 import Depth4Frame from "./depth4-frame";
 import { useEffect, useState } from "react";
-import getNews from "../api/getNews";
+import getNews from "../util/getNews";
 
 const FrameWithText: NextPage = () => {
   const [newsData, setNewsData] = useState([]);

@@ -7,11 +7,11 @@ import SnapshotAndGraph from "../components/snapshot-and-graph";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { getMetaData } from "../api/getMetaData";
-import { getMarketQuotes } from "../api/getMarketQuotes";
-import { getProfile } from "../api/getProfile";
-import { getToken } from "../api/getToken";
-import { getQuotes } from "../api/getQuotes";
+import { getMetaData } from "../util/getMetaData";
+import { getMarketQuotes } from "../util/getMarketQuotes";
+import { getProfile } from "../util/getProfile";
+import { getToken } from "../util/getToken";
+import { getQuotes } from "../util/getQuotes";
 
 const dummyData = {
   status: "success",
@@ -111,6 +111,24 @@ const Dashboard = () => {
   const router = useRouter();
 
   const [upstoxCode, setUpstoxCode] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/user/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: "John Doe" }),
+      });
+      const data = await res.json();
+      console.log(data);
+      // Process the data from the API response
+      setData(data);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const { code } = router.query; // Retrieve the 'code' query parameter
@@ -135,8 +153,6 @@ const Dashboard = () => {
       tokenGenerator();
     }
   }, [upstoxCode]);
-
-  
 
   const [CompanyToDisplay, setCompanyToDisplay] = useState<any>(dummyData);
   return (

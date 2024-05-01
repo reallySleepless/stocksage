@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { getProfile } from "../api/getProfile";
+import { getProfile } from "../util/getProfile";
 import { get } from "http";
 import { useState } from "react";
 

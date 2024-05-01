@@ -5,8 +5,8 @@ import { json } from "stream/consumers";
 import RecentPrediction from "./recent-prediction";
 import React, { useDebugValue, useEffect, useState } from "react";
 import jsonFile from "../DataFiles/NSE.json";
-import { getExchangeStatus } from "../api/getExchangeStatus";
-import { getHistoricalData } from "../api/historicalData";
+import { getExchangeStatus } from "../util/getExchangeStatus";
+import { getHistoricalData } from "../util/historicalData";
 import axios from "axios";
 
 export interface predictedCompanyInterface {
