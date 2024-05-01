@@ -9,18 +9,18 @@ export default async function handler(req, res) {
   const { db } = await connectToDatabase();
 
   if (req.method === "GET") {
-    const { id, userId } = req.query;
+    const { id, user_id } = req.query;
     if (id) {
       const watchlist = await db
         .collection("watchlists")
         .findOne({ _id: new ObjectId(id) });
       return res.status(200).json({ watchlist });
     }
-    if (userId) {
+    if (user_id) {
       // all watchlists for a specific user
       const watchlists = await db
         .collection("watchlists")
-        .find({ userId })
+        .find({ user_id })
         .toArray();
       return res.status(200).json({ watchlists });
     }
