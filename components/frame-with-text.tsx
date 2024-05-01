@@ -1,8 +1,26 @@
 import type { NextPage } from "next";
 import Depth5Frame from "./depth5-frame";
 import Depth4Frame from "./depth4-frame";
+import { useEffect, useState } from "react";
+import getNews from "../api/getNews";
 
 const FrameWithText: NextPage = () => {
+  const [newsData, setNewsData] = useState([]);
+  const [visibleNewsCount, setVisibleNewsCount] = useState<number>(5);
+
+  useEffect(() => {
+    const getNewsData = async () => {
+      const data = await getNews();
+      setNewsData(data.articles);
+    };
+
+    getNewsData();
+  }, []);
+
+  const showMoreNews = () => {
+    setVisibleNewsCount(newsData.length);
+  };
+
   return (
     <section className="w-[107.625rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full text-left text-[2.813rem] text-black font-plus-jakarta-sans">
       <div className="w-[76.75rem] flex flex-col items-start justify-start gap-[0.663rem] max-w-full">
@@ -114,49 +132,39 @@ const FrameWithText: NextPage = () => {
               </div>
             </div>
             <div className="flex-1 flex flex-col items-start justify-start max-w-[calc(100%_-_307px)] text-[0.875rem] text-cornflowerblue-100 mq975:max-w-full">
-              <Depth4Frame
-                cNBC1hAgo="Yahoo Finance · 2h ago"
-                stockFuturesAreFlatAfterS="Dow Jones Futures: Stock Market Rally Extended On Fed Rate Hopes; Tesla, Apple, Microsoft, Nvidia Lead Buy Points"
-                uSStockFuturesWereFlatInO={`The stock market rally extended gains as the S&P 500 index and Nasdaq composite hit record highs. Fed chief Jerome Powell said the central bank will act as appropriate on interest rates. Tesla, Apple, Microsoft and Nvidia are at or near buy points.`}
-                depth8Frame0="/depth-8-frame-0-1@2x.png"
-                propMarginTop="-4.25rem"
-                propMinHeight="2.5rem"
-                propWidth="34.744rem"
-                propMinHeight1="5.25rem"
-                propWidth1="unset"
-                propAlignSelf="stretch"
-                propHeight="10.563rem"
-              />
-              <Depth4Frame
-                cNBC1hAgo="Yahoo Finance · 2h ago"
-                stockFuturesAreFlatAfterS="Dow Jones Futures: Stock Market Rally Extended On Fed Rate Hopes; Tesla, Apple, Microsoft, Nvidia Lead Buy Points"
-                uSStockFuturesWereFlatInO={`The stock market rally extended gains as the S&P 500 index and Nasdaq composite hit record highs. Fed chief Jerome Powell said the central bank will act as appropriate on interest rates. Tesla, Apple, Microsoft and Nvidia are at or near buy points.`}
-                depth8Frame0="/depth-8-frame-0-1@2x.png"
-                propMarginTop="-4.25rem"
-                propMinHeight="2.5rem"
-                propWidth="34.744rem"
-                propMinHeight1="5.25rem"
-                propWidth1="unset"
-                propAlignSelf="stretch"
-                propHeight="10.563rem"
-              />
-              <Depth4Frame
-                cNBC1hAgo="Yahoo Finance · 2h ago"
-                stockFuturesAreFlatAfterS="Dow Jones Futures: Stock Market Rally Extended On Fed Rate Hopes; Tesla, Apple, Microsoft, Nvidia Lead Buy Points"
-                uSStockFuturesWereFlatInO={`The stock market rally extended gains as the S&P 500 index and Nasdaq composite hit record highs. Fed chief Jerome Powell said the central bank will act as appropriate on interest rates. Tesla, Apple, Microsoft and Nvidia are at or near buy points.`}
-                depth8Frame0="/depth-8-frame-0-1@2x.png"
-                propMarginTop="-4.25rem"
-                propMinHeight="2.5rem"
-                propWidth="34.744rem"
-                propMinHeight1="5.25rem"
-                propWidth1="unset"
-                propAlignSelf="stretch"
-                propHeight="10.563rem"
-              />
+              {newsData
+                .slice(0, visibleNewsCount)
+                .map((news: any, index: number) => {
+                  return (
+                    <Depth4Frame
+                      key={index}
+                      cNBC1hAgo={news.source.name}
+                      stockFuturesAreFlatAfterS={news.title}
+                      uSStockFuturesWereFlatInO={news.description}
+                      depth8Frame0={news.urlToImage}
+                      propMarginTop="-4.25rem"
+                      propMinHeight="2.5rem"
+                      propWidth="34.744rem"
+                      propMinHeight1="5.25rem"
+                      propWidth1="unset"
+                      propAlignSelf="stretch"
+                      propHeight="10.563rem"
+                      newsUrl={news.url}
+                    />
+                  );
+                })}
+              {newsData.length > visibleNewsCount && (
+                <button
+                  onClick={showMoreNews}
+                  className="m-auto bg-[#7aa3ff] px-5 py-2 rounded-sm text-white mt-4 text-lg hover:cursor-pointer"
+                >
+                  Show more
+                </button>
+              )}
             </div>
           </div>
         </div>
-        <div className="self-stretch flex flex-row items-start justify-center py-[0rem] px-[1.25rem]">
+        {/* <div className="self-stretch flex flex-row items-start justify-center py-[0rem] px-[1.25rem]">
           <button className="cursor-pointer [border:none] py-[0.594rem] px-[1rem] bg-royalblue-100 rounded-xl overflow-hidden flex flex-row items-center justify-center">
             <div className="bg-royalblue-100 overflow-hidden flex flex-col items-start justify-start">
               <div className="flex flex-col items-start justify-start">
@@ -166,7 +174,7 @@ const FrameWithText: NextPage = () => {
               </div>
             </div>
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
