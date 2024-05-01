@@ -7,11 +7,11 @@ import SnapshotAndGraph from "../components/snapshot-and-graph";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { getMetaData } from "../api/getMetaData";
-import { getMarketQuotes } from "../api/getMarketQuotes";
-import { getProfile } from "../api/getProfile";
-import { getToken } from "../api/getToken";
-import { getQuotes } from "../api/getQuotes";
+import { getMetaData } from "./api/getMetaData";
+import { getMarketQuotes } from "./api/getMarketQuotes";
+import { getProfile } from "./api/getProfile";
+import { getToken } from "./api/getToken";
+import { getQuotes } from "./api/getQuotes";
 
 const dummyData = {
   status: "success",
