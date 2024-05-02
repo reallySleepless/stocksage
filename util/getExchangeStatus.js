@@ -12,7 +12,7 @@ export const getExchangeStatus = async ({ exchange }) => {
     const response = await axios.get(url, { headers });
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     Router.push("/login");
   }
 };
