@@ -57,6 +57,11 @@ const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
 
   useEffect(() => {
     const getHolding = async () => {
+      const token = localStorage.getItem("upstoxToken");
+      if (!token) {
+        console.log("Token not found");
+        return;
+      }
       const res = await getHoldings();
       setPortfolioData(res.data);
     };

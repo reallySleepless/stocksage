@@ -9,6 +9,10 @@ export const getHoldings = async () => {
   };
 
   try {
+    if (!token) {
+      console.error("Token not found");
+      return;
+    }
     const response = await axios.get(url, { headers });
     return response.data;
   } catch (error) {

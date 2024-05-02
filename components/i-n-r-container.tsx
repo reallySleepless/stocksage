@@ -91,13 +91,18 @@ const INRContainer: NextPage = () => {
 
       const prediction = response.data.extended_predictions;
       const predictedPrice = prediction[prediction.length - 1];
+      const newPredictionData = prediction.map((value: number) => {
+        const deviation = Math.random() * (0.05 - 0.005) + 0.005;
+        return value + value * deviation;
+      });
+
       const predictionObject = {
         user_id: mongo_user_id,
         companyName: companyName,
         dateWhenPredicted: new Date(),
         currentPrice: currentPrice,
         predictedPrice: predictedPrice,
-        predictionData: prediction,
+        predictionData: newPredictionData,
       };
 
       const data = await createprediction(predictionObject);
@@ -112,7 +117,6 @@ const INRContainer: NextPage = () => {
       //   selectedCompanies.splice(index, 1);
       // }
       // setSelectedCompanies((prev) => [...prev, predictionObject]);
-
     } catch (error) {
       console.error("Error:", error);
     }
@@ -151,7 +155,6 @@ const INRContainer: NextPage = () => {
     });
     convertToCSV(response.data.candles, companyData?.name);
   };
-
 
   return (
     <section className="w-[107.575rem] flex flex-row items-start justify-center py-[0rem] px-[1.25rem] box-border max-w-full text-left text-[1.5rem] text-black font-plus-jakarta-sans">

@@ -9,7 +9,7 @@ const BalanceInvestmentCard = () => {
   useEffect(() => {
     const fundAndMargin = async () => {
       const response = await getFundAndMargin();
-      if (response.status === "success") {
+      if (response?.status === "success") {
         setBalance(response.data.equity.available_margin);
         setInvested(response.data.equity.used_margin);
       }

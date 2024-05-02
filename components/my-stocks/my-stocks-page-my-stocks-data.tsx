@@ -135,7 +135,7 @@ const MyStocksData = ({
               tradingData.map((trade: any) => (
                 <Depth4Frame
                   aAPL={trade?.tradingsymbol}
-                  shareAt150={`${trade?.quantity} shares at $${trade?.average_price}`}
+                  shareAt150={`${trade?.quantity} shares at ₹${trade?.average_price}`}
                   propHeight="unset"
                   propPadding="0.75rem 0rem 0.75rem 1rem"
                   propMarginTop="unset"
