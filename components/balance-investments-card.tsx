@@ -9,7 +9,7 @@ const BalanceInvestmentCard = () => {
   useEffect(() => {
     const fundAndMargin = async () => {
       const response = await getFundAndMargin();
-      if (response.status === "success") {
+      if (response?.status === "success") {
         setBalance(response.data.equity.available_margin);
         setInvested(response.data.equity.used_margin);
       }
@@ -35,7 +35,7 @@ const BalanceInvestmentCard = () => {
         </div>
         <div className="flex flex-col items-start justify-start gap-[0.375rem]">
           <div className="w-[3.188rem] relative text-[0.875rem] font-actor text-darkslateblue-100 text-center inline-block">
-            Invested
+            Traded
           </div>
           <div className="rounded-lg bg-darkslateblue-100 flex flex-row items-center justify-start py-[1rem] pr-[9.938rem] pl-[1.25rem] relative gap-[0.625rem] mq450:pr-[1.25rem] mq450:box-border">
             <div className="relative text-[1.25rem] font-actor text-white text-left whitespace-nowrap mq450:text-[1rem] w-[60px]">

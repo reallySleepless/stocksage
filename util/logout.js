@@ -1,3 +1,5 @@
+import Router from "next/router";
+
 export const logout = async () => {
   const url = "https://api.upstox.com/v2/logout";
   const token = localStorage.setItem("upstoxToken", "");
@@ -11,5 +13,6 @@ export const logout = async () => {
     return response.data;
   } catch (error) {
     console.error(error);
+    Router.push("/");
   }
 };

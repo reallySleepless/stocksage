@@ -22,6 +22,10 @@ const PredictionChartJS = ({
       const date = new Date(predictedDate.setDate(predictedDate.getDate() + 1));
       dateArray.push(date.toLocaleDateString());
     }
+    console.log("Company Prediction Data", company.predictionData);
+
+    // for all values in predictionData, deviate each value by 0.5% to 5% to show the prediction
+
     setYvalue(company.predictionData);
     setXvalue(dateArray);
   }, [company]);
