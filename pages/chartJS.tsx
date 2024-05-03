@@ -16,7 +16,7 @@ const intervalObj = {
 const settingPrevDate = (date: Date, interval: string) => {
   let prevDate = new Date(date);
   if (interval === "1D") {
-    prevDate.setDate(prevDate.getDate() - 1);
+    prevDate.setDate(prevDate.getDate() - 3);
   }
   if (interval === "5D") {
     prevDate.setDate(prevDate.getDate() - 5);

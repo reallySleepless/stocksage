@@ -51,13 +51,19 @@ const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
   });
 
   const portfolioAnalytics = ["1D", "5D", "1M", "6M", "1Y", "5Y"];
-  const [portfolioAnalyticsData, setPortfolioAnalyticsData] = useState<any>(0);
+  const [portfolioAnalyticsData, setPortfolioAnalyticsData] =
+    useState<number>(0);
 
   const [portfolioData, setPortfolioData] = useState<any>([]);
+  const [token, setToken] = useState<string | null | undefined>(null);
+
+  useEffect(() => {
+    const token1 = localStorage.getItem("upstoxToken");
+    setToken(token1);
+  }, []);
 
   useEffect(() => {
     const getHolding = async () => {
-      const token = localStorage.getItem("upstoxToken");
       if (!token) {
         console.log("Token not found");
         return;
@@ -67,7 +73,7 @@ const SnapshotAndGraph = ({ companyData }: { companyData: any }) => {
     };
 
     getHolding();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const prevYearData = async () => {

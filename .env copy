@@ -1,15 +1,13 @@
 NEXT_PUBLIC_API_KEY="your api key"
 NEXT_PUBLIC_API_SECRET="your api secret"
-NEXT_PUBLIC_REDIRECT_URL="your redirect url"
-# NEXT_PUBLIC_CODE="2Tw56j"
-# NEXT_PUBLIC_ACCESS_TOKEN="eyJ0eXAiOiJKV1QiLCJrZXlfaWQiOiJza192MS4wIiwiYWxnIjoiSFMyNTYifQ.eyJzdWIiOiI1OEJGVjciLCJqdGkiOiI2NjJjY2UzM2QzNjFiMjJlMGQ0N2Q0NDciLCJpc011bHRpQ2xpZW50IjpmYWxzZSwiaXNBY3RpdmUiOnRydWUsInNjb3BlIjpbImludGVyYWN0aXZlIiwiaGlzdG9yaWNhbCJdLCJpYXQiOjE3MTQyMTI0MDMsImlzcyI6InVkYXBpLWdhdGV3YXktc2VydmljZSIsImV4cCI6MTcxNDI1NTIwMH0.uSK7Up1YXdfuVSQaA0EmV4aujRiW3G9OqTQkU1rcZsg"
-NEXT_PUBLIC_NEWS_API = "your news api"
-NEXT_PUBLIC_QUOTES_API = "your quotes api"
-NEXT_PUBLIC_PREDICT_URL = "http://localhost:5000"
-
-NEXT_PUBLIC_NEWS_API_1 = "your news api"
-MONGODB_URI="your mongodb uri"
-DB_NAME="your db name"
 
 
-# client url : https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=0be29efc-2ba4-41db-b6d0-88fe4d69451f&redirect_uri=http://localhost:3000/
+NEXT_PUBLIC_REDIRECT_URL="your redirect url as mentioned in upstox"
+NEXT_PUBLIC_NEWS_API = "the news api key"
+NEXT_PUBLIC_QUOTES_API = "the quotes api key"
+NEXT_PUBLIC_PREDICT_URL = "the predict url"
+NEXT_PUBLIC_MODE = "PRODUCTION" or "DEVELOPMENT"
+
+# NEXT_PUBLIC_NEWS_API_1 = " qcgs938rEYRRhVJl8iCIYdjNGjG9caSRMr2KMRHO"
+MONGODB_URI="mongodb url"
+DB_NAME="db name"

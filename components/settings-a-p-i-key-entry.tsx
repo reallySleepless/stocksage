@@ -3,6 +3,7 @@ import FrameComponent from "./settings-frame-component";
 import { useEffect, useState } from "react";
 import { getProfile } from "../util/getProfile";
 import { logout } from "../util/logout";
+import Router from "next/router";
 
 const APIKeyEntry: NextPage = () => {
   const [profile, setProfile] = useState<any>(null);
@@ -18,7 +19,7 @@ const APIKeyEntry: NextPage = () => {
   const loggingOut = async () => {
     localStorage.setItem("mongo_user_id", "");
     const data = await logout();
-    console.log(data);
+    
   };
 
   return (
