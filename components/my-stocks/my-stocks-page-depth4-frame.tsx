@@ -11,7 +11,7 @@ export type Depth4FrameType = {
   propMarginTop?: CSSProperties["marginTop"];
   propWidth?: CSSProperties["width"];
   propPadding1?: CSSProperties["padding"];
-  propDebugCommit?: CSSProperties["debugCommit"];
+  propDebugCommit?: any;
   propMinWidth?: CSSProperties["minWidth"];
   propMinWidth1?: CSSProperties["minWidth"];
   propMinWidth2?: CSSProperties["minWidth"];
