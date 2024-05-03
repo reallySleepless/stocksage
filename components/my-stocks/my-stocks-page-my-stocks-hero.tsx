@@ -45,14 +45,11 @@ const MyStocksHero = ({
           <div className="self-stretch flex flex-row items-start justify-start py-[0rem]  box-border max-w-full">
             <div className="flex-1 flex flex-row items-start justify-center py-[0.75rem]  box-border gap-[0.743rem] max-w-full">
               <Depth5Frame
-                prop={`₹${(
-                  (investedValue + returnValue) /
-                  10
-                ).toLocaleString()}`}
+                prop={`₹${(investedValue + returnValue).toLocaleString()}`}
                 invested="Total value"
               />
               <Depth5Frame
-                prop={`₹${(investedValue / 10).toLocaleString()}`}
+                prop={`₹${investedValue.toLocaleString()}`}
                 invested="Invested"
               />
               <Depth5Frame
