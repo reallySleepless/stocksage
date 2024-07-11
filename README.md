@@ -1,4 +1,4 @@
-# 🚀 Figma UI Kit - Finance Dashboard (Community) 📊
+# 🚀StockSage - Your Personal Trading Assistant 📊
 
 📝 **Note:** Ensure you have [Node.js](https://nodejs.org/en/download/) installed.
 
